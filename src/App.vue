@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <b-container>
+  <div id="app" class="p-0">
+    <div id="nav" class="p-0 pt-1">
+      <b-container class="p-0" fluid>
         <b-row fluid>
           <b-col cols="4">
             <b-img :src="LogoSource" alt="Vue logo" fluid class="logo"/>
@@ -44,12 +44,15 @@ export default {
 </script>
 
 <style lang="scss">
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    // max-height: 1vh;
+    background-size: cover;
   }
   #nav {
     padding: 30px;
