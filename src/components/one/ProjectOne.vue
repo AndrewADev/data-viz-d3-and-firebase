@@ -38,6 +38,7 @@
 
 <script>
 import * as d3 from 'd3'
+import tip from 'd3-tip'
 // TODO: document difference
 import { legendColor } from 'd3-svg-legend'
 import firebase from 'firebase/app'
@@ -81,6 +82,18 @@ export default {
         .outerRadius(dims.radius)
         .innerRadius(dims.radius / 2)
 
+      const tooltip = tip()
+        .attr('class', 'tip card')
+        .html(d => {
+          // TODO: Alternative that less messy and doesn't require
+          // non-scoped styles
+          let content = `<div class="name">${d.data.name}</div>`
+          content += `<div class="cost">${d.data.cost}</div>`
+          content += `<div class="delete">Click slice to delete</div>`
+          return content
+        })
+      graph.call(tooltip)
+
       const arcTweenEnter = (d) => {
         let i = d3.interpolate(d.endAngle, d.startAngle)
 
@@ -117,6 +130,12 @@ export default {
         .shape('circle')
         .shapePadding(10)
         .scale(color)
+
+      const transitionToColor = (colorFunc) => (d, i, n) => {
+        d3.select(n[i])
+          .transition('transitionToFillColor').duration(300)
+          .attr('fill', colorFunc(d.data.name))
+      }
 
       const update = (data) => {
         // Update colors used
@@ -155,6 +174,20 @@ export default {
           })
           .transition().duration(750)
           .attrTween('d', arcTweenEnter)
+
+        graph.selectAll('path')
+          .on('mouseover', (d, i, n) => {
+            tooltip.show(d, n[i])
+            transitionToColor(() => '#fff')(d, i, n)
+          })
+          .on('mouseout', (d, i, n) => {
+            tooltip.hide()
+            transitionToColor(color)(d, i, n)
+          })
+          .on('click', (d) => {
+            const { id } = d.data
+            this.db.collection('expenses').doc(id).delete()
+          })
       }
 
       let data = []
@@ -231,5 +264,19 @@ export default {
   .project-main {
     background-color: $indigo;
     height: 100vh;
+  }
+
+</style>
+
+// TODO: Fix. This is needed to style the tooltip we create dynamically
+<style lang="scss">
+  .tip {
+    padding: 10px;
+    background: #333 !important;
+    color: #fff;
+    .delete {
+      color: hotpink;
+      font-size: 0.8em;
+    }
   }
 </style>
