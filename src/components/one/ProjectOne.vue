@@ -6,26 +6,7 @@
     </header>
     <b-row class="project-main pt-4">
       <b-col class="col-sm-12 col-md-5">
-        <b-card
-          title="Add Item:"
-          class="text-indigo text-left mt-3 mb-3"
-          >
-          <b-form>
-            <b-input-group>
-              <b-input-group prepend="Item Name:" class="mt-1">
-                <b-form-input id="name" v-model="name"></b-form-input>
-              </b-input-group>
-              <b-input-group prepend="Item Cost (€):" class="mt-1">
-                <b-form-input id="cost" v-model="cost"></b-form-input>
-              </b-input-group>
-              <b-btn @click="printItem" class="mt-1">Add Item</b-btn>
-
-            </b-input-group>
-          </b-form>
-          <em slot="footer">
-            <p id="error" class="text-danger">{{errorMessage}}</p>
-          </em>
-        </b-card>
+        <add-budget-item v-on:add-item="addItem"/>
       </b-col>
       <b-col class="col-sm-12 offset-md-1 col-md-5">
         <div class="canvas">
@@ -43,14 +24,13 @@ import tip from 'd3-tip'
 import { legendColor } from 'd3-svg-legend'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import AddBudgetItem from './AddBudgetItem'
 
 export default {
   name: 'ProjectOne',
+  components: { AddBudgetItem },
   data () {
     return {
-      cost: 0,
-      name: '',
-      error: '',
       db: {}
     }
   },
@@ -215,22 +195,13 @@ export default {
       })
     },
 
-    printItem (event) {
-      if (this.cost && this.name) {
-        const newItem = {
-          name: this.name,
-          cost: parseInt(this.cost)
-        }
-        this.db.collection('expenses')
-          .add(newItem)
-          .then(res => {
-            this.error = ''
-            this.name = ''
-            this.cost = 0
-          })
-      } else {
-        this.error = 'Please enter valid values'
-      }
+    addItem (newItem) {
+      this.db.collection('expenses')
+        .add(newItem)
+        .then(res => {
+          // success message or notification?
+        })
+        // error handling?
     }
   },
 
@@ -251,10 +222,6 @@ export default {
 <style lang="scss" scoped>
   @import 'node_modules/bootstrap/scss/bootstrap';
   @import 'node_modules/bootstrap-vue/src/index.scss';
-
-  .text-indigo {
-    color: $indigo;
-  }
 
   .project-header {
     background-color: darken($indigo, 10%);
