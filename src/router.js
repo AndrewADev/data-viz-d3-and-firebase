@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 
 // Projects
 import ProjectOne from './components/one/ProjectOne'
+import ProjectTwo from './components/two/ProjectTwo'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/projects/one',
       name: 'project-one',
       component: ProjectOne
+    },
+    {
+      path: '/projects/two',
+      name: 'project-two',
+      component: ProjectTwo
     }
   ]
 })

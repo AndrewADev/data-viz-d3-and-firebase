@@ -4,7 +4,7 @@
       <b-container class="p-0" fluid>
         <b-row fluid>
           <b-col cols="4">
-            <b-img :src="LogoSource" alt="Vue logo" fluid class="logo"/>
+            <b-img :src="LogoSource" alt="D3 logo" fluid class="logo"/>
           </b-col>
 
           <b-col cols="7">
@@ -15,10 +15,15 @@
                 text="Projects"
                 >
                 <b-dropdown-item
-                  to="projects/one"
+                  to="/projects/one"
                   >
                     Project 1
                   </b-dropdown-item>
+                <b-dropdown-item
+                  to="/projects/two"
+                >
+                    Project 2
+                </b-dropdown-item>
               </b-nav-item-dropdown>
             </b-nav>
           </b-col>
