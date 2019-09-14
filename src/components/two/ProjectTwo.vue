@@ -19,10 +19,20 @@
       </b-row>
       <b-row >
         <b-col class="offset-md-3 col-md-6">
-          <b-form class="mt-4">
+          <b-form class="mt-4" @submit="newItem($event)">
             <p class="gray-text-light justify-content-center">How much <span class="activity">{{activity}}</span> have you done today?</p>
-            <b-input type="text" :id="activity" class="gray-text-light" placeholder="Distance in m"/>
-            <b-alert variant="danger" class="mt-2" >{{error}}</b-alert>
+            <b-input
+              type="number"
+              required
+              aria-invalid="Distance is required"
+              :id="activity"
+              class="gray-text-light"
+              v-model="distance"
+              :state="isValidDistance"
+              placeholder="Distance in m"></b-input>
+            <b-form-invalid-feedback id="input-live-feedback">
+              Enter a positive number
+            </b-form-invalid-feedback>
           </b-form>
         </b-col>
       </b-row>
@@ -42,6 +52,8 @@ export default {
     return {
       db: {},
       activity: 'cycling',
+      distance: null,
+      isValidDistance: null,
       options: [
         { activity: 'cycling', state: true },
         { activity: 'running', state: false },
@@ -52,11 +64,30 @@ export default {
     }
   },
 
+  computed: {
+    hasValidDistance () {
+      return !Number.isNaN(Number.parseFloat(this.distance)) && this.distance > 0
+    }
+  },
+
   methods: {
     drawGraph () {
     },
 
-    addItem (newItem) {
+    newItem (event) {
+      event.preventDefault()
+      this.isValidDistance = this.hasValidDistance
+
+      if (this.hasValidDistance) {
+        this.db.collection('activities').add({
+          activity: this.activity,
+          distance: this.distance,
+          date: new Date().toLocaleDateString()
+        }).then(() => {
+          this.distance = null
+          this.isValidDistance = null
+        })
+      }
     },
 
     setGraphView (selectedIdx) {
