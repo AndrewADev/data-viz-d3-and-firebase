@@ -15,24 +15,25 @@
         <b-button block @click="setGraphView(3)" :pressed.sync="options[3].state" value="walking">Walking</b-button>
         </b-col>
         <b-col class="col-sm-12 col-lg-6">
+          <line-chart :graph-width="560" :graph-height="400"/>
         </b-col>
       </b-row>
       <b-row >
         <b-col class="offset-md-3 col-md-6">
-          <b-form class="mt-4" @submit="newItem($event)">
-            <p class="gray-text-light justify-content-center">How much <span class="activity">{{activity}}</span> have you done today?</p>
-            <b-input
-              type="number"
-              required
-              aria-invalid="Distance is required"
-              :id="activity"
-              class="gray-text-light"
-              v-model="distance"
-              :state="isValidDistance"
-              placeholder="Distance in m"></b-input>
-            <b-form-invalid-feedback id="input-live-feedback">
-              Enter a positive number
-            </b-form-invalid-feedback>
+          <b-form class="my-4" @submit="newItem">
+              <p class="gray-text-light justify-content-center">How much <span class="activity">{{activity}}</span> have you done today?</p>
+              <b-input
+                type="number"
+                required
+                aria-invalid="Distance is required"
+                :id="activity"
+                class="gray-text-light"
+                v-model="distance"
+                :state="isValidDistance"
+                placeholder="Distance in m"></b-input>
+              <b-form-invalid-feedback id="input-live-feedback">
+                Enter a positive number
+              </b-form-invalid-feedback>
           </b-form>
         </b-col>
       </b-row>
@@ -42,12 +43,13 @@
 
 <script>
 // import * as d3 from 'd3'
-
+import LineChart from './LineChart'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 export default {
   name: 'ProjectTwo',
+  components: { LineChart },
   data () {
     return {
       db: {},
@@ -82,7 +84,7 @@ export default {
         this.db.collection('activities').add({
           activity: this.activity,
           distance: this.distance,
-          date: new Date().toLocaleDateString()
+          date: new Date().toString()
         }).then(() => {
           this.distance = null
           this.isValidDistance = null
@@ -123,7 +125,7 @@ export default {
 
   .project-main {
     background-color: $gray-900;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
   }
 
