@@ -9,6 +9,10 @@
           <g class="x-axis" :transform="`translate(0, ${graphHeight})`"/>
           <g class="y-axis"/>
           <path id="data-line" />
+          <g class="dotted-lines">
+            <path id="x-hover" class="hover-line"/>
+            <path id="y-hover" class="hover-line"/>
+          </g>
         </g>
       </svg>
     </div>
@@ -70,6 +74,12 @@ export default {
     path () {
       return d3.select('#data-line')
     },
+    xHover () {
+      return d3.select('#x-hover')
+    },
+    yHover () {
+      return d3.select('#y-hover')
+    },
     xScale () {
       return d3.scaleTime().range([0, this.graphWidth])
     },
@@ -125,11 +135,28 @@ export default {
 
       graph.selectAll('circle')
         .on('mouseover', (d, i, n) => {
+          const xHoverData = [
+            { ...d, distance: 0 },
+            d
+          ]
+          const yHoverData = [
+            { ...d, date: d3.min(chartData, d => new Date(d.date)) },
+            d
+          ]
+
           d3.select(n[i])
             .transition()
             .duration(100)
             .attr('r', 8)
             .attr('fill', '#fff')
+          vm.xHover
+            .data([xHoverData])
+            .attr('opacity', 1)
+            .attr('d', vm.lineGenerator)
+          vm.yHover
+            .data([yHoverData])
+            .attr('opacity', 1)
+            .attr('d', vm.lineGenerator)
         })
         .on('mouseout', (d, i, n) => {
           d3.select(n[i])
@@ -137,6 +164,8 @@ export default {
             .duration(200)
             .attr('r', 4)
             .attr('fill', '#ccc')
+          vm.xHover.attr('opacity', 0)
+          vm.yHover.attr('opacity', 0)
         })
 
       const xAxis = d3.axisBottom(xScale)
@@ -197,6 +226,13 @@ export default {
     box-sizing: border-box;
     // This targets the axes (stroke and text, it seems)
     color: #ccc;
+  }
+
+  .hover-line {
+    fill: none;
+    stroke: #777;
+    stroke-width: 2;
+    stroke-dasharray: (4, 4);
   }
 
   .x-axis path, .y-axis path, .x-axis line, .y-axis line {
