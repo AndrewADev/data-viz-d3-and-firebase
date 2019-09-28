@@ -21,6 +21,8 @@ import * as d3 from 'd3'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 
+import { ACTIVITY } from './constants'
+
 export default {
   name: 'LineChart',
   data () {
@@ -34,6 +36,10 @@ export default {
   },
 
   props: {
+    activity: {
+      type: String,
+      default: ACTIVITY.CYCLING
+    },
     graphHeight: {
       type: Number,
       default: 310
@@ -69,6 +75,8 @@ export default {
 
     update (chartData) {
       const { xScale, yScale } = this
+
+      chartData = chartData.filter(item => item.activity === this.activity)
 
       xScale.domain(d3.extent(chartData, d => new Date(d.date)))
       yScale.domain([0, d3.max(chartData, d => d.distance)])

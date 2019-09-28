@@ -15,7 +15,7 @@
         <b-button block @click="setGraphView(3)" :pressed.sync="options[3].state" value="walking">Walking</b-button>
         </b-col>
         <b-col class="col-sm-12 col-lg-6">
-          <line-chart />
+          <line-chart :activity="activity" :key="activity"/>
         </b-col>
       </b-row>
       <b-row >
@@ -47,20 +47,22 @@ import LineChart from './LineChart'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 
+import { ACTIVITY } from './constants'
+
 export default {
   name: 'ProjectTwo',
   components: { LineChart },
   data () {
     return {
       db: {},
-      activity: 'cycling',
+      activity: ACTIVITY.CYCLING,
       distance: null,
       isValidDistance: null,
       options: [
-        { activity: 'cycling', state: true },
-        { activity: 'running', state: false },
-        { activity: 'swimming', state: false },
-        { activity: 'walking', state: false }
+        { activity: ACTIVITY.CYCLING, state: true },
+        { activity: ACTIVITY.RUNNING, state: false },
+        { activity: ACTIVITY.SWIMMING, state: false },
+        { activity: ACTIVITY.WALKING, state: false }
       ],
       error: ''
     }
