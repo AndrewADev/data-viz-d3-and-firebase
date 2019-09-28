@@ -85,7 +85,7 @@ export default {
 
     update (chartData) {
       const vm = this
-      const { xScale, yScale } = vm
+      const { xScale, yScale, graph } = vm
 
       chartData = chartData.filter(item => item.activity === this.activity)
 
@@ -103,7 +103,7 @@ export default {
         .attr('d', vm.lineGenerator)
 
       // Create circles for objects
-      const circles = this.graph.selectAll('circle')
+      const circles = graph.selectAll('circle')
         .data(chartData)
 
       // remove unwanted points
@@ -122,6 +122,22 @@ export default {
         .attr('cx', d => xScale(new Date(d.date)))
         .attr('cy', d => yScale(new Date(d.distance)))
         .attr('fill', '#ccc')
+
+      graph.selectAll('circle')
+        .on('mouseover', (d, i, n) => {
+          d3.select(n[i])
+            .transition()
+            .duration(100)
+            .attr('r', 8)
+            .attr('fill', '#fff')
+        })
+        .on('mouseout', (d, i, n) => {
+          d3.select(n[i])
+            .transition()
+            .duration(200)
+            .attr('r', 4)
+            .attr('fill', '#ccc')
+        })
 
       const xAxis = d3.axisBottom(xScale)
         .ticks(4)
