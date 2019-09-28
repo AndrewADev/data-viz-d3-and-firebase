@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 
 // Projects
 import ProjectOne from './components/one/ProjectOne'
+import ProjectTwo from './components/two/ProjectTwo'
 
 Vue.use(Router)
 
@@ -17,17 +18,14 @@ export default new Router({
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    },
-    {
       path: '/projects/one',
       name: 'project-one',
       component: ProjectOne
+    },
+    {
+      path: '/projects/two',
+      name: 'project-two',
+      component: ProjectTwo
     }
   ]
 })
