@@ -10,7 +10,6 @@
           <b-col cols="7">
             <b-nav class="p-2">
               <b-nav-item to="/">Home</b-nav-item>
-              <b-nav-item to="/about">About</b-nav-item>
               <b-nav-item-dropdown
                 text="Projects"
                 >
