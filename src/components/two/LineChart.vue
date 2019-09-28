@@ -5,8 +5,8 @@
         <g class="graph"
           :width="graphWidth - marginLeft - marginRight"
           :height="graphHeight - marginTop - marginRight">
-          <g class="x-axis" :transform="`translate(0, ${graphHeight - marginBottom})`"/>
-          <g class="y-axis" :transform="`translate(40, 0)`"/>
+          <g class="x-axis" :transform="`translate(${this.marginLeft - 60}, ${graphHeight - marginBottom})`"/>
+          <g class="y-axis" :transform="`translate(${this.marginLeft - 60}, -${marginBottom})`"/>
         </g>
       </svg>
     </div>
@@ -66,7 +66,7 @@ export default {
 
     update (chartData) {
       const { xScale, yScale } = this
-      console.info('xScale', xScale)
+
       xScale.domain(d3.extent(chartData, d => new Date(d.date)))
       yScale.domain([0, d3.max(chartData, d => d.distance)])
 
@@ -75,16 +75,14 @@ export default {
         .tickFormat(d3.timeFormat('%b %d'))
       const yAxis = d3.axisLeft(yScale)
         .ticks(4)
-        .tickFormat(d => `${d} m`)
+        .tickFormat(d => `${d}m`)
       const xAxisGroup = d3.select('.x-axis')
-      console.info('xAxis group', xAxisGroup)
       xAxisGroup.call(xAxis)
 
       const yAxisGroup = d3.select('.y-axis')
       yAxisGroup.call(yAxis)
 
       xAxisGroup.selectAll('text')
-      // TODO: CSS?
         .attr('transform', 'rotate(-40)')
         .attr('text-anchor', 'end')
     },
@@ -138,19 +136,14 @@ export default {
 
 <style lang="scss" scoped>
   .graph {
-    margin: 40px 20px 50px 100px;
-    box-sizing: border-box;
+    // This targets the axes (stroke and text, it seems)
+    color: #ccc;
   }
 
   .x-axis path, .y-axis path, .x-axis line, .y-axis line {
-    // stroke: #ccc !important;
+    stroke: #ccc;
+    color: #ccc;
     // fill: #ccc !important;
-  }
-
-  .x-axis, .y-axis, .x-axis, .y-axis {
-    stroke: #ccc !important;
-    stroke-width: 1px;
-    fill: #ccc !important;
   }
 
   .x-axis text, .y-axis text {
