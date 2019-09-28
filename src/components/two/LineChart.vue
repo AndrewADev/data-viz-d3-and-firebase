@@ -8,6 +8,7 @@
           :transform="`translate(${marginLeft}, ${marginTop})`">
           <g class="x-axis" :transform="`translate(0, ${graphHeight})`"/>
           <g class="y-axis"/>
+          <path id="data-line" />
         </g>
       </svg>
     </div>
@@ -60,6 +61,15 @@ export default {
     graph () {
       return d3.select('.graph')
     },
+    lineGenerator () {
+      const vm = this
+      return d3.line()
+        .x(d => vm.xScale(new Date(d.date)))
+        .y(d => vm.yScale(d.distance))
+    },
+    path () {
+      return d3.select('#data-line')
+    },
     xScale () {
       return d3.scaleTime().range([0, this.graphWidth])
     },
@@ -74,12 +84,23 @@ export default {
     },
 
     update (chartData) {
-      const { xScale, yScale } = this
+      const vm = this
+      const { xScale, yScale } = vm
 
       chartData = chartData.filter(item => item.activity === this.activity)
 
+      // Sort chronologically
+      chartData.sort((a, b) => new Date(a.date) - new Date(b.date))
+
       xScale.domain(d3.extent(chartData, d => new Date(d.date)))
       yScale.domain([0, d3.max(chartData, d => d.distance)])
+
+      // update path data
+      this.path.data([chartData])
+        .attr('fill', 'none')
+        .attr('stroke', '#00bfa5')
+        .attr('stroke-width', 2)
+        .attr('d', vm.lineGenerator)
 
       // Create circles for objects
       const circles = this.graph.selectAll('circle')
