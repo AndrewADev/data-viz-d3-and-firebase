@@ -15,7 +15,7 @@
         <b-button block @click="setGraphView(3)" :pressed.sync="options[3].state" value="walking">Walking</b-button>
         </b-col>
         <b-col class="col-sm-12 col-lg-6">
-          <line-chart :graph-width="560" :graph-height="400"/>
+          <line-chart />
         </b-col>
       </b-row>
       <b-row >
@@ -83,7 +83,7 @@ export default {
       if (this.hasValidDistance) {
         this.db.collection('activities').add({
           activity: this.activity,
-          distance: this.distance,
+          distance: Number.parseInt(this.distance),
           date: new Date().toString()
         }).then(() => {
           this.distance = null
@@ -145,17 +145,4 @@ export default {
     color: $teal-highlight !important;
   }
 
-</style>
-
-// TODO: Fix. This is needed to style the tooltip we create dynamically
-<style lang="scss">
-  .tip {
-    padding: 10px;
-    background: #333 !important;
-    color: #fff;
-    .delete {
-      color: hotpink;
-      font-size: 0.8em;
-    }
-  }
 </style>

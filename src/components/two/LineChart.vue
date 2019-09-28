@@ -1,12 +1,13 @@
 <template>
   <b-container fluid>
     <div class="canvas">
-      <svg class="line-chart" :width="graphWidth" :height="graphHeight">
+      <svg class="line-chart" :width="totalWidth" :height="totalHeight">
         <g class="graph"
-          :width="graphWidth - marginLeft - marginRight"
-          :height="graphHeight - marginTop - marginRight">
-          <g class="x-axis" :transform="`translate(${this.marginLeft - 60}, ${graphHeight - marginBottom})`"/>
-          <g class="y-axis" :transform="`translate(${this.marginLeft - 60}, -${marginBottom})`"/>
+          :width="graphWidth"
+          :height="graphHeight"
+          :transform="`translate(${marginLeft}, ${marginTop})`">
+          <g class="x-axis" :transform="`translate(0, ${graphHeight})`"/>
+          <g class="y-axis"/>
         </g>
       </svg>
     </div>
@@ -27,7 +28,7 @@ export default {
       marginTop: 40,
       marginRight: 20,
       marginBottom: 50,
-      marginLeft: 100,
+      marginLeft: 50,
       db: {}
     }
   },
@@ -35,17 +36,23 @@ export default {
   props: {
     graphHeight: {
       type: Number,
-      default: 400
+      default: 310
     },
     graphWidth: {
       type: Number,
-      default: 560
+      default: 490
     }
   },
 
   computed: {
+    totalHeight () {
+      return this.graphHeight + this.marginTop + this.marginBottom
+    },
     totalWidth () {
       return this.graphWidth + this.marginRight + this.marginLeft
+    },
+    graph () {
+      return d3.select('.graph')
     },
     xScale () {
       return d3.scaleTime().range([0, this.graphWidth])
@@ -58,10 +65,6 @@ export default {
 
   methods: {
     drawGraph () {
-      // function arcTweenUpdate (d) {
-      //   return function (t) {
-      //   }
-      // }
     },
 
     update (chartData) {
@@ -69,6 +72,27 @@ export default {
 
       xScale.domain(d3.extent(chartData, d => new Date(d.date)))
       yScale.domain([0, d3.max(chartData, d => d.distance)])
+
+      // Create circles for objects
+      const circles = this.graph.selectAll('circle')
+        .data(chartData)
+
+      // remove unwanted points
+      circles.exit().remove()
+
+      // update current points
+      circles.attr('r', 4)
+        .attr('cx', d => xScale(new Date(d.date)))
+        .attr('cy', d => yScale(new Date(d.distance)))
+        .attr('fill', '#ccc')
+
+      // add new points
+      circles.enter()
+        .append('circle')
+        .attr('r', 4)
+        .attr('cx', d => xScale(new Date(d.date)))
+        .attr('cy', d => yScale(new Date(d.distance)))
+        .attr('fill', '#ccc')
 
       const xAxis = d3.axisBottom(xScale)
         .ticks(4)
@@ -86,18 +110,6 @@ export default {
         .attr('transform', 'rotate(-40)')
         .attr('text-anchor', 'end')
     },
-
-    // arcTweenEnter (d) {
-    //   return (t) => {
-
-    //   }
-    // },
-
-    // arcTweenExit (d) {
-    //   return (t) => {
-
-    //   }
-    // },
 
     subscribeToFirebaseUpdates () {
       let data = []
@@ -136,6 +148,8 @@ export default {
 
 <style lang="scss" scoped>
   .graph {
+    margin: 40px 20px 50px 50px;
+    box-sizing: border-box;
     // This targets the axes (stroke and text, it seems)
     color: #ccc;
   }
