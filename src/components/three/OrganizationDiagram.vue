@@ -59,12 +59,17 @@ export default {
     tree () {
       return d3.tree()
         .size([this.graphWidth, this.graphHeight])
+    },
+    color () {
+      return d3.scaleOrdinal(d3['schemeTableau10'])
     }
   },
 
   methods: {
     update (chartData) {
-      const { stratify, graph } = this
+      const { color, graph, stratify } = this
+
+      color.domain(chartData.map(d => d.department))
 
       // Quick n dirty way to prompt update
       graph.selectAll('.node').remove()
@@ -97,7 +102,7 @@ export default {
         .attr('transform', d => `translate(${d.x}, ${d.y})`)
 
       enterNodes.append('rect')
-        .attr('fill', '#aaa')
+        .attr('fill', d => color(d.data.department))
         .attr('stroke', '#555')
         .attr('stroke-width', 2)
         .attr('height', 50)
