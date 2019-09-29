@@ -17,7 +17,7 @@
 import * as d3 from 'd3'
 
 export default {
-  name: 'CirclePackChart',
+  name: 'OrganizationDiagram',
   data () {
     return {
       marginTop: 50,
