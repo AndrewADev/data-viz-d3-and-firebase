@@ -2,7 +2,7 @@
   <div id="app" class="p-0">
     <div id="nav" class="p-0 pt-1">
       <b-container class="p-0" fluid>
-        <b-row fluid>
+        <b-row class="mx-0">
           <b-col cols="4">
             <b-img :src="LogoSource" alt="D3 logo" fluid class="logo"/>
           </b-col>

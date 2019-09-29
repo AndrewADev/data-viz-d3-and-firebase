@@ -1,7 +1,7 @@
 <template>
   <b-container fluid>
     <div class="canvas">
-      <svg class="circle-pack-chart" :width="totalWidth" :height="totalHeight">
+      <svg class="organization-diagram" :viewBox="`0 0 ${totalWidth} ${totalHeight}`">
         <g class="graph"
           :width="graphWidth"
           :height="graphHeight"
@@ -33,11 +33,11 @@ export default {
   props: {
     graphHeight: {
       type: Number,
-      default: 700
+      default: 500
     },
     graphWidth: {
       type: Number,
-      default: 960
+      default: 1100
     }
   },
 
@@ -50,12 +50,64 @@ export default {
     },
     graph () {
       return d3.select('.graph')
+    },
+    stratify () {
+      return d3.stratify()
+        .id(d => d.name)
+        .parentId(d => d.parent)
+    },
+    tree () {
+      return d3.tree()
+        .size([this.graphWidth, this.graphHeight])
     }
   },
 
   methods: {
     update (chartData) {
+      const { stratify, graph } = this
 
+      // Quick n dirty way to prompt update
+      graph.selectAll('.node').remove()
+      graph.selectAll('.link').remove()
+
+      const rootNode = stratify(chartData)
+
+      const treeData = this.tree(rootNode)
+
+      const nodes = graph.selectAll('.node')
+        .data(treeData.descendants())
+
+      const links = graph.selectAll('.link')
+        .data(treeData.links())
+
+      links.enter()
+        .append('path')
+        .attr('class', 'link')
+        .attr('fill', 'none')
+        .attr('stroke', '#aaa')
+        .attr('stroke-width', 2)
+        .attr('d', d3.linkVertical()
+          .x(d => d.x)
+          .y(d => d.y)
+        )
+
+      const enterNodes = nodes.enter()
+        .append('g')
+        .attr('class', 'node')
+        .attr('transform', d => `translate(${d.x}, ${d.y})`)
+
+      enterNodes.append('rect')
+        .attr('fill', '#aaa')
+        .attr('stroke', '#555')
+        .attr('stroke-width', 2)
+        .attr('height', 50)
+        .attr('width', d => d.data.name.length * 20)
+        .attr('transform', d => `translate(-${d.data.name.length * 10}, -25)`)
+
+      enterNodes.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('fill', 'white')
+        .text(d => d.data.name)
     },
 
     subscribeToFirebaseUpdates () {
