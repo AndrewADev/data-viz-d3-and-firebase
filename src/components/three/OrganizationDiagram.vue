@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import firebase from 'firebase/app'
+import 'firebase/firestore'
 
 import * as d3 from 'd3'
 
@@ -52,14 +54,39 @@ export default {
   },
 
   methods: {
-    drawGraph () {
+    update (chartData) {
 
+    },
+
+    subscribeToFirebaseUpdates () {
+      let data = []
+      this.db.collection('employees').onSnapshot(res => {
+        res.docChanges().forEach(change => {
+          const doc = { ...change.doc.data(), id: change.doc.id }
+
+          switch (change.type) {
+            case 'added':
+              data.push(doc)
+              break
+            case 'modified':
+              const index = data.findIndex(item => item.id === doc.id)
+              data[index] = doc
+              break
+            case 'removed':
+              data = data.filter(item => item.id !== doc.id)
+              break
+            default:
+              break
+          }
+        })
+        this.update(data)
+      })
     }
-
   },
 
   mounted () {
-    this.drawGraph()
+    this.db = firebase.firestore()
+    this.subscribeToFirebaseUpdates()
   }
 }
 </script>

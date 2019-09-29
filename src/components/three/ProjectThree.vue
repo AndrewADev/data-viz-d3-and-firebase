@@ -8,7 +8,18 @@
         <p class="text-grey">The Number ONE Ninja Company</p>
         <b-button pill v-b-modal.add-employee-modal class="add-button">+</b-button>
     </b-container>
-    <add-employee-modal id="add-employee-modal" />
+    <add-employee-modal
+      id="add-employee-modal"
+      v-on:add-new-employee="addEmployee"
+    />
+    <b-toast
+      variant="danger"
+      id="error-toast"
+      title="Entry not submitted"
+      ref="error-toast"
+    >
+      Please provide at least employee name and department
+    </b-toast>
     <b-container class="project-main" fluid>
       <b-row class="pt-4">
         <b-col>
@@ -20,6 +31,8 @@
 </template>
 
 <script>
+import firebase from 'firebase/app'
+import 'firebase/firestore'
 
 import AddEmployeeModal from './AddEmployeeModal'
 import OrganizationDiagram from './OrganizationDiagram'
@@ -38,6 +51,17 @@ export default {
   },
 
   methods: {
+    addEmployee (employee) {
+      if (employee && employee.name && employee.department) {
+        this.db.collection('employees').add(employee)
+        return
+      }
+      this.$refs['error-toast'].show()
+    }
+  },
+
+  mounted () {
+    this.db = firebase.firestore()
   }
 
 }

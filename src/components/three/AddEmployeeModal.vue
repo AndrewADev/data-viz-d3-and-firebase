@@ -3,12 +3,17 @@
       :id="modalId"
       centered
       hide-footer
-      hide-header=""
+      hide-header
+      ref="main-modal"
     >
       <div class="text-center">
         <h5 class="text-pink">Add New Employee</h5>
       </div>
-      <div>
+      <b-form
+        @submit="addNewEmployee"
+        @reset="clearEmployeeFields"
+        ref="add-form"
+      >
         <b-input-group
           prepend="Name"
           class="mt-3"
@@ -25,10 +30,15 @@
           prepend="Department"
           class="mt-3"
         >
-          <b-input v-model="newEmployee.department" placeholder="Sales"/>
+          <b-input
+            :formatter="toLowerCase"
+            v-model="newEmployee.department"
+            placeholder="Sales"
+            lazy-formatter
+          />
         </b-input-group>
-      </div>
-      <b-btn class="mt-3">Add Employee</b-btn>
+      <b-btn class="mt-3" type="submit">Add Employee</b-btn>
+      </b-form>
     </b-modal>
 </template>
 
@@ -58,9 +68,24 @@ export default {
 
   methods: {
     drawGraph () {
+    },
 
+    toLowerCase (value, event) {
+      return value.toLowerCase()
+    },
+
+    addNewEmployee (e) {
+      e.preventDefault()
+      this.$emit('add-new-employee', this.newEmployee)
+      this.$refs['add-form'].reset()
+      this.$refs['main-modal'].hide()
+    },
+
+    clearEmployeeFields () {
+      this.newEmployee.name = ''
+      this.newEmployee.parent = ''
+      this.newEmployee.department = ''
     }
-
   },
 
   mounted () {
@@ -79,5 +104,4 @@ export default {
   .text-pink {
     color: $darkpink;
   }
-
 </style>
