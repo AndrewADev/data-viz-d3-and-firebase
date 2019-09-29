@@ -13,16 +13,9 @@
               <b-nav-item-dropdown
                 text="Projects"
                 >
-                <b-dropdown-item
-                  to="/projects/one"
-                  >
-                    Project 1
-                  </b-dropdown-item>
-                <b-dropdown-item
-                  to="/projects/two"
-                >
-                    Project 2
-                </b-dropdown-item>
+                <b-dropdown-item to="/projects/one">Project 1</b-dropdown-item>
+                <b-dropdown-item to="/projects/two">Project 2</b-dropdown-item>
+                <b-dropdown-item to="/projects/hierarchy">Hierarchy Example</b-dropdown-item>
               </b-nav-item-dropdown>
             </b-nav>
           </b-col>
