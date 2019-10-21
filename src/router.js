@@ -6,6 +6,7 @@ import Home from './views/Home.vue'
 import ProjectOne from './components/one/ProjectOne'
 import ProjectTwo from './components/two/ProjectTwo'
 import HierarchyExample from './components/hierarchy/HierarchyExample'
+import ProjectThree from './components/three/ProjectThree'
 
 Vue.use(Router)
 
@@ -32,6 +33,11 @@ export default new Router({
       path: '/projects/hierarchy',
       name: 'hierarchy',
       component: HierarchyExample
+    },
+    {
+      path: '/projects/three',
+      name: 'project-three',
+      component: ProjectThree
     }
   ]
 })
