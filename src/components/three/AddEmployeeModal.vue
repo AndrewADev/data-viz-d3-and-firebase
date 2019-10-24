@@ -1,6 +1,7 @@
 <template>
       <b-modal
       :id="modalId"
+      :static="this.static"
       centered
       hide-footer
       hide-header
@@ -60,6 +61,11 @@ export default {
     modalId: {
       type: String,
       default: 'add-employee-modal'
+    },
+    // Needed for testing, see: https://stackoverflow.com/a/58539818
+    static: {
+      type: Boolean,
+      default: false
     }
   },
 

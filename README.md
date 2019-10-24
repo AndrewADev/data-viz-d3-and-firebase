@@ -1,6 +1,6 @@
 # data-viz-d3-and-firebase
 
-This project combines the exercises of Shaun Pelling's D3.js & Firebase course with a Vue-Bootstrap SPA (as opposed to Vanilla JS and Material design.)
+This project combines the exercises of Shaun Pelling's D3.js & Firebase course with a Bootstrap-Vue SPA (as opposed to Vanilla JS and Material design.)
 
 ## Project setup
 This project assumes you are running against a firebase firestore instance for persistence. See [Google's documentation](https://cloud.google.com/firestore/docs/quickstart-servers) for creating a firestore instance.
@@ -51,7 +51,7 @@ npm run build
 npm run lint
 ```
 
-*Run your unit tests* (currently disabled)
+*Run the unit tests*
 ```
 npm run test:unit
 ```
