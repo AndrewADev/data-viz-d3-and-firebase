@@ -1,4 +1,14 @@
 module.exports = {
+  collectCoverageFrom: [
+    '**/*.{js,jsx,vue}',
+    '!..*rc.js',
+    '!**/..*rc.js',
+    '!**/node_modules/**',
+    '!**/vendor/**',
+    '!*.config.js',
+    '!**/coverage/**',
+    '!**/tests/**'
+  ],
   moduleFileExtensions: [
     'js',
     'jsx',
