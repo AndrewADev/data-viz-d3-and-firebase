@@ -113,6 +113,8 @@ export default {
         .attr('text-anchor', 'middle')
         .attr('fill', 'white')
         .text(d => d.data.name)
+
+      this.$emit('roster-change', chartData)
     },
 
     subscribeToFirebaseUpdates () {

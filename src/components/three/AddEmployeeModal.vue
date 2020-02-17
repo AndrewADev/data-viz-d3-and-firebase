@@ -25,7 +25,16 @@
           prepend="Manager"
           class="mt-3"
         >
-          <b-input v-model="newEmployee.parent" placeholder="Michael Scott"/>
+          <b-form-select v-model="newEmployee.parent" @change="managerChanged">
+            <option
+              v-for="manager in availableManagers"
+              :key="manager.id"
+              :value="manager.name"
+              :disabled="!hasFounder"
+            >
+            {{manager.name}}
+            </option>
+          </b-form-select>
         </b-input-group>
         <b-input-group
           prepend="Department"
@@ -66,15 +75,23 @@ export default {
     static: {
       type: Boolean,
       default: false
+    },
+    availableManagers: {
+      type: Array,
+      default: () => []
     }
   },
 
   computed: {
+    /**
+     * Is there at least one employee available? (A founder)
+     */
+    hasFounder () {
+      return this.availableManagers.length > 0
+    }
   },
 
   methods: {
-    drawGraph () {
-    },
 
     toLowerCase (value, event) {
       return value.toLowerCase()
@@ -91,11 +108,18 @@ export default {
       this.newEmployee.name = ''
       this.newEmployee.parent = ''
       this.newEmployee.department = ''
+    },
+
+    managerChanged (oEvent) {
+      const manager = this.availableManagers.find(manager => manager.name === oEvent)
+
+      if (manager) {
+        this.newEmployee.department = manager.department
+      }
     }
   },
 
   mounted () {
-    this.drawGraph()
   }
 }
 </script>

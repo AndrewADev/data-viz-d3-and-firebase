@@ -10,6 +10,7 @@
     </b-container>
     <add-employee-modal
       id="add-employee-modal"
+      :available-managers="roster"
       v-on:add-new-employee="addEmployee"
     />
     <b-toast
@@ -18,12 +19,12 @@
       title="Entry not submitted"
       ref="error-toast"
     >
-      Please provide at least employee name and department
+      Please provide details on employee
     </b-toast>
     <b-container class="project-main" fluid>
       <b-row class="pt-4">
         <b-col>
-          <organization-diagram class="chart"/>
+          <organization-diagram class="chart" @roster-change="updateRoster"/>
         </b-col>
       </b-row>
     </b-container>
@@ -43,6 +44,7 @@ export default {
   data () {
     return {
       db: {},
+      roster: [],
       error: ''
     }
   },
@@ -57,6 +59,10 @@ export default {
         return
       }
       this.$refs['error-toast'].show()
+    },
+
+    updateRoster (newRoster) {
+      this.roster = newRoster
     }
   },
 
