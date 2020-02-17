@@ -20,3 +20,9 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Hosting
+.firebase
+.firebaserc
+database.rules.json
+firebase.json
