@@ -9,7 +9,7 @@
           <b-form-input id="name" v-model="name"></b-form-input>
         </b-input-group>
         <b-input-group prepend="Item Cost (€):" class="mt-1">
-          <b-form-input id="cost" v-model="cost"></b-form-input>
+          <b-form-input id="cost" v-model="cost" type="number"></b-form-input>
         </b-input-group>
         <b-btn @click="printItem" class="mt-1">Add Item</b-btn>
 
