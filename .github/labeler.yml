@@ -1,0 +1,13 @@
+ci:
+  - .github/**/*
+  - .circleci/**/*
+
+app:
+  - src/**/*
+
+repo:
+  - ./*
+  - setup/**/*
+
+tests:
+  - tests/**/*
