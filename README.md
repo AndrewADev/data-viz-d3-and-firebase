@@ -2,6 +2,8 @@
 
 This project combines the exercises of Shaun Pelling's D3.js & Firebase course with a Bootstrap-Vue SPA (as opposed to Vanilla JS and Material design.)
 
+![What the App looks like](./media/home-preview.png)
+
 ## Project setup
 This project assumes you are running against a firebase firestore instance for persistence. See [Google's documentation](https://cloud.google.com/firestore/docs/quickstart-servers) for creating a firestore instance.
 

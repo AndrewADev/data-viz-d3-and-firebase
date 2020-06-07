@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint",
     "test:unit:ci": "npm run test:unit -- --ci --coverage",
     "test:unit": "vue-cli-service test:unit",
+    "utils:gen-preview": "npx cypress run --config-file cypress.doc.json --spec 'cypress/documentation/documentation.spec.js' && mv cypress/screenshots/documentation.spec.js/* src/assets",
     "setup": "./setup/project_setup.sh"
   },
   "dependencies": {
@@ -32,6 +33,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "cypress": "^4.7.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.14.1",
