@@ -43,10 +43,9 @@ context('Misc', () => {
 
   it('captures screenshot for hierarchy example', () => {
     cy.visit('/projects/hierarchy');
-    // TODO: Can we wait on visual directly?
-    cy.get('.project-background')
-      .wait(1200)
-      .screenshot('preview-hierarchy-example');
+    // Currently using mocked-data, so no need
+    // to wait
+    cy.get('.project-background').screenshot('preview-hierarchy-example');
   });
 
   it('captures screenshot for project three ', () => {
