@@ -1,13 +1,13 @@
-const { promises: fsAsync, existsSync } = require("fs");
-const path = require("path");
+const { promises: fsAsync, existsSync } = require('fs');
+const path = require('path');
 
-const looksSame = require("looks-same");
+const looksSame = require('looks-same');
 
 const fileNames = [
-  "preview-hierarchy-example.png",
-  "preview-project-one.png",
-  "preview-project-two.png",
-  "preview-project-three.png"
+  'preview-hierarchy-example.png',
+  'preview-project-one.png',
+  'preview-project-two.png',
+  'preview-project-three.png'
 ];
 
 const moveFiles = async (oldLocation, newLocation) => {
@@ -17,7 +17,7 @@ const moveFiles = async (oldLocation, newLocation) => {
     if (existsSync(oldFull)) {
       looksSame(oldFull, newFull, async (err, { equal } = {}) => {
         if (err) {
-          console.error("Error running comparison:", err);
+          console.error('Error running comparison:', err);
         }
         if (equal) {
           console.info(
