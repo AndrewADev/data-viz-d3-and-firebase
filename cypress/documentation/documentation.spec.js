@@ -33,10 +33,13 @@ context('Misc', () => {
 
   it('captures screenshot for project two ', () => {
     cy.visit('/projects/two');
-    // TODO: Can we wait on visual directly?
-    cy.get('.project-background')
-      .wait(1200)
-      .screenshot('preview-project-two');
+
+    // Serves as guard clause indicating that the graph has finished animating
+    cy.get('.graph')
+      .invoke('height')
+      .should('be.gte', 310);
+
+    cy.get('.project-background').screenshot('preview-project-two');
   });
 
   //http://localhost:8080/projects/hierarchy
@@ -50,9 +53,12 @@ context('Misc', () => {
 
   it('captures screenshot for project three ', () => {
     cy.visit('/projects/three');
-    // TODO: Can we wait on visual directly?
-    cy.get('.project-background')
-      .wait(1200)
-      .screenshot('preview-project-three');
+
+    // Serves as guard clause indicating that the graph has finished animating
+    cy.get('.graph')
+      .invoke('height')
+      .should('be.gte', 310);
+
+    cy.get('.project-background').screenshot('preview-project-three');
   });
 });
