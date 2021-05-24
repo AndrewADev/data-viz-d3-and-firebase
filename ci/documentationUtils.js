@@ -15,7 +15,7 @@ const moveFiles = async (oldLocation, newLocation) => {
     const oldFull = path.join(oldLocation, fileName);
     const newFull = path.join(newLocation, fileName);
     if (existsSync(oldFull)) {
-      looksSame(oldFull, newFull, async (err, { equal } = {}) => {
+      looksSame(oldFull, newFull, { tolerance: 5 }, async (err, equal = {}) => {
         if (err) {
           console.error('Error running comparison:', err);
         }
