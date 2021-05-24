@@ -24,6 +24,11 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-{{ .Branch }}-
 
+      # Apparently not included in the "build essentials", we pull this ourselves
+      # Not exactly a new thing either: https://discuss.circleci.com/t/npm-install-fails-on-a-native-module/19073/2
+      # TODO: consider finding better container?
+      - run: sudo apt-get install make
+
       - run: npm ci
 
       - save_cache:
