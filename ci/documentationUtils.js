@@ -1,4 +1,4 @@
-const fs = require("fs").promises;
+const { promises: fsAsync, existsSync } = require("fs");
 const path = require("path");
 
 const looksSame = require("looks-same");
@@ -14,19 +14,25 @@ const moveFiles = async (oldLocation, newLocation) => {
   fileNames.forEach(async fileName => {
     const oldFull = path.join(oldLocation, fileName);
     const newFull = path.join(newLocation, fileName);
-    looksSame(oldFull, newFull, async (err, { equal } = {}) => {
-      if (err) {
-        console.error("Error running comparison:", err);
-      }
-      if (equal) {
-        console.info(
-          `The file ${fileName} does not appear to have changed. It has not been moved`
-        );
-      } else {
-        await fs.rename(oldFull, newFull);
-        console.info(`The file ${fileName} has been updated`);
-      }
-    });
+    if (existsSync(oldFull)) {
+      looksSame(oldFull, newFull, async (err, { equal } = {}) => {
+        if (err) {
+          console.error("Error running comparison:", err);
+        }
+        if (equal) {
+          console.info(
+            `The file ${fileName} does not appear to have changed. It has not been moved`
+          );
+        } else {
+          await fsAsync.rename(oldFull, newFull);
+          console.info(`The file ${fileName} has been updated`);
+        }
+      });
+    } else {
+      console.error(
+        `The file ${fileName} was not generated, and cannot be compared`
+      );
+    }
   });
 };
 
