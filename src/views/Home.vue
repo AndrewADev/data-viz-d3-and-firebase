@@ -10,12 +10,17 @@
         <p>Use the links above to navigate to the projects.</p>
       </b-col>
     </b-row>
+    <project-preview-carousel />
   </b-container>
 </template>
 
 <script>
+import ProjectPreviewCarousel from './ProjectPreviewCarousel'
 
 export default {
-  name: 'home'
+  name: 'home',
+  components: {
+    ProjectPreviewCarousel
+  }
 }
 </script>

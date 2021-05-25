@@ -26,3 +26,13 @@ yarn-error.log*
 .firebaserc
 database.rules.json
 firebase.json
+
+# Cypress
+cypress/integration/examples
+cypress/fixtures/example.json
+cypress/screenshots
+cypress/videos
+
+# NOTE: May need to undo these at some point, if using like-named fixtures
+cypress/fixtures/profile.json
+cypress/fixtures/users.json

@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 8440",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit:ci": "npm run test:unit -- --ci --coverage",
     "test:unit": "vue-cli-service test:unit",
+    "utils:gen-preview": "npx cypress run --config-file cypress.doc.json --spec 'cypress/documentation/documentation.spec.js' && node ./ci/export-documentation.js",
     "setup": "./setup/project_setup.sh"
   },
   "dependencies": {
@@ -32,8 +33,10 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "cypress": "^7.4.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^6.2.2",
+    "looks-same": "^7.3.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.10"

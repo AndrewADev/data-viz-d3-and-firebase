@@ -1,0 +1,6 @@
+{
+    "baseUrl": "http://localhost:8440",
+    "integrationFolder": "cypress/documentation",
+    "trashAssetsBeforeRuns": true,
+    "video": false
+}
