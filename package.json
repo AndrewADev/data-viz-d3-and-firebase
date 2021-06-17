@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve --port 8440",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "lint:ci": "vue-cli-service lint --no-fix",
     "test:unit:ci": "npm run test:unit -- --ci --coverage",
     "test:unit": "vue-cli-service test:unit",
     "utils:gen-preview": "npx cypress run --config-file cypress.doc.json --spec 'cypress/documentation/documentation.spec.js' && node ./ci/export-documentation.js",

@@ -33,3 +33,5 @@ jobs:
 
       # run tests!
       - run: npm run test:unit:ci
+
+      - run: npm run lint:ci
