@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import * as firebase from 'firebase/app'
+import { firebase } from '@firebase/app'
 import App from './App.vue'
 import router from './router'
 import BootstrapVue from 'bootstrap-vue'
@@ -23,5 +23,5 @@ Vue.use(BootstrapVue)
 
 new Vue({
   router,
-  render: h => h(App)
+  render: (h) => h(App)
 }).$mount('#app')
