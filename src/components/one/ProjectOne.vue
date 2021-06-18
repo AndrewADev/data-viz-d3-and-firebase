@@ -16,9 +16,7 @@
 </template>
 
 <script>
-// TODO: document difference
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+import { getDatabase } from '../../firestore'
 import AddBudgetItem from './AddBudgetItem'
 import DonutChart from './DonutChart'
 
@@ -52,7 +50,7 @@ export default {
   },
 
   mounted () {
-    this.db = firebase.firestore()
+    this.db = getDatabase()
 
     this.drawGraph()
   }

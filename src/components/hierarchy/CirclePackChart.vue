@@ -25,8 +25,7 @@ export default {
       marginTop: 50,
       marginRight: 50,
       marginBottom: 50,
-      marginLeft: 50,
-      db: {}
+      marginLeft: 50
     }
   },
 

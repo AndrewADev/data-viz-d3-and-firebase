@@ -25,7 +25,6 @@ export default {
   components: { CirclePackChart },
   data () {
     return {
-      db: {},
       error: ''
     }
   },
