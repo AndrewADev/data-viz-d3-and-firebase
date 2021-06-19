@@ -12,7 +12,6 @@ import * as d3 from 'd3'
 import tip from 'd3-tip'
 // TODO: document difference
 import { legendColor } from 'd3-svg-legend'
-import { getDatabase } from '../../firestore'
 
 export default {
   name: 'DonutChart',
@@ -212,7 +211,7 @@ export default {
   },
 
   mounted () {
-    this.db = getDatabase()
+    this.db = this.$firestore
     this.initializeChart()
     this.subscribeFirebaseUpdates()
   }

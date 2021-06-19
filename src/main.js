@@ -5,6 +5,7 @@ import router from './router'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import { getDatabase } from './firestore'
 
 Vue.config.productionTip = false
 
@@ -20,6 +21,9 @@ const dbConfig = {
 firebase.initializeApp(dbConfig)
 
 Vue.use(BootstrapVue)
+
+// TODO: toggle
+Vue.prototype.$firestore = getDatabase({ useEmulator: true })
 
 new Vue({
   router,

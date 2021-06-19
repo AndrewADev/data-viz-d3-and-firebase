@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import { getDatabase } from '../../firestore'
-
 import * as d3 from 'd3'
 
 export default {
@@ -143,7 +141,7 @@ export default {
   },
 
   mounted () {
-    this.db = getDatabase()
+    this.db = this.$firestore
     this.subscribeToFirebaseUpdates()
   }
 }

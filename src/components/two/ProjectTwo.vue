@@ -43,7 +43,6 @@
 
 <script>
 import LineChart from './LineChart'
-import { getDatabase } from '../../firestore'
 
 import { ACTIVITY } from './constants'
 
@@ -105,7 +104,7 @@ export default {
   },
 
   mounted () {
-    this.db = getDatabase()
+    this.db = this.$firestore
 
     this.drawGraph()
   }

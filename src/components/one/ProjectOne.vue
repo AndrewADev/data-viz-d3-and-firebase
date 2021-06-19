@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import { getDatabase } from '../../firestore'
 import AddBudgetItem from './AddBudgetItem'
 import DonutChart from './DonutChart'
 
@@ -50,7 +49,7 @@ export default {
   },
 
   mounted () {
-    this.db = getDatabase()
+    this.db = this.$firestore
 
     this.drawGraph()
   }

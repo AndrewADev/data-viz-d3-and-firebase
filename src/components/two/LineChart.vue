@@ -23,8 +23,6 @@
 
 import * as d3 from 'd3'
 
-import { getDatabase } from '../../firestore'
-
 import { ACTIVITY } from './constants'
 
 export default {
@@ -212,7 +210,7 @@ export default {
   },
 
   mounted () {
-    this.db = getDatabase()
+    this.db = this.$firestore
     this.subscribeToFirebaseUpdates()
     this.drawGraph()
   }
