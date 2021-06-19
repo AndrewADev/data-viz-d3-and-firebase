@@ -1,0 +1,50 @@
+name: "E2E Tests"
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "cypress/**"
+      - "!cypress/documentation/**"
+      - "src/**"
+
+      # Irrelevant files
+      - "!src/assets/**"
+
+      # Relevant configs
+      - "cypress.json"
+      - "package.json"
+      - "package-lock.json"
+      - "firebase.json"
+
+jobs:
+  run_tests:
+    name: "Run e2e tests"
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
+        # TODO: Maybe combine in a script in package.json?
+      - name: Start the app
+        run: npm run serve:e2e &
+
+      # TODO: Cache
+      - name: Install Firebase tools
+        run: curl -sL firebase.tools | bash
+
+      - name: Start firebase and run e2e
+        run: npx firebase emulators:exec --import=./cypress/fixtures/firebase "npx cypress run"
+
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+          retention-days: 45
