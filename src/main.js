@@ -22,8 +22,7 @@ firebase.initializeApp(dbConfig)
 
 Vue.use(BootstrapVue)
 
-// TODO: toggle
-Vue.prototype.$firestore = getDatabase({ useEmulator: true })
+Vue.prototype.$firestore = getDatabase()
 
 new Vue({
   router,
