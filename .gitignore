@@ -21,11 +21,13 @@ yarn-error.log*
 *.sln
 *.sw?
 
-# Hosting
+# Firebase
 .firebase
+# If not sharing the same project (ex: company internal),
+# then don't include: https://firebase.google.com/docs/cli/#source_control_aliases
 .firebaserc
 database.rules.json
-firebase.json
+*-debug.log
 
 # Cypress
 cypress/integration/examples
