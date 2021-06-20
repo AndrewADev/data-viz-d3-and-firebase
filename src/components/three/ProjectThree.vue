@@ -32,9 +32,6 @@
 </template>
 
 <script>
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-
 import AddEmployeeModal from './AddEmployeeModal'
 import OrganizationDiagram from './OrganizationDiagram'
 
@@ -67,7 +64,7 @@ export default {
   },
 
   mounted () {
-    this.db = firebase.firestore()
+    this.db = this.$firestore
   }
 
 }

@@ -42,10 +42,7 @@
 </template>
 
 <script>
-// import * as d3 from 'd3'
 import LineChart from './LineChart'
-import firebase from 'firebase/app'
-import 'firebase/firestore'
 
 import { ACTIVITY } from './constants'
 
@@ -107,7 +104,7 @@ export default {
   },
 
   mounted () {
-    this.db = firebase.firestore()
+    this.db = this.$firestore
 
     this.drawGraph()
   }
