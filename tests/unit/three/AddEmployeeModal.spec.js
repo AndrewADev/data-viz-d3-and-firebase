@@ -8,7 +8,7 @@ localVue.use(BootstrapVue)
 describe('AddEmployeeModal', () => {
   it('passes up add employee event on button click', () => {
     const wrapper = mount(AddEmployeeModal, {
-      attachToDocument: true,
+      attachTo: document.body,
       localVue,
       propsData: {
         static: true
@@ -18,5 +18,6 @@ describe('AddEmployeeModal', () => {
     const button = wrapper.find('button')
     button.trigger('click')
     expect(wrapper.emitted('add-new-employee')).toBeTruthy()
+    wrapper.destroy()
   })
 })
