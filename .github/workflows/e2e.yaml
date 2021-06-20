@@ -45,6 +45,14 @@ jobs:
       - uses: actions/upload-artifact@v2
         if: failure()
         with:
+          name: firebase-debug
+          # Catches firebase, firestore
+          path: "*-debug.log"
+          retention-days: 45
+
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
           name: cypress-videos
           path: cypress/videos
           retention-days: 45
