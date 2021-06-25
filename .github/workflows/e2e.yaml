@@ -23,7 +23,11 @@ on:
 jobs:
   run_tests:
     name: "Run e2e tests"
-    runs-on: ubuntu-latest
+    # Our current export file is from Windows, so, due to the emulator, we must run on Windows
+    # See firebase-tools issue #2421
+    # Note that it may be worth looking into the work-arounds mentioned there (tho I failed to
+    # get them working previously)
+    runs-on: windows-latest
     timeout-minutes: 7
     steps:
       - uses: actions/checkout@v2
@@ -34,7 +38,6 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
-        # TODO: Maybe combine in a script in package.json?
       - name: Start the app
         run: npm run serve:e2e &
 
@@ -43,7 +46,7 @@ jobs:
         run: curl -sL firebase.tools | bash
 
       - name: Start firebase and run e2e
-        run: npx firebase emulators:exec --import=./cypress/fixtures/firebase "npx cypress run"
+        run: firebase emulators:exec --import=./cypress/fixtures/firebase "npx cypress run"
 
       - uses: actions/upload-artifact@v2
         if: failure()
