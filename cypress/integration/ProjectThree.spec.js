@@ -9,7 +9,7 @@ context('ProjectThree', () => {
     cy.contains('Project 3').click()
 
     cy.get('.graph')
-      .find('.node')
+      .find('.node', { timeout: 10000 })
       .should('have.length', 2)
 
     // TODO: Could really use better attrs to query - ARIA or name?
