@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      # TODO: remove
+      - ".github/workflows/e2e.yaml"
+
       - "cypress/**"
       - "!cypress/documentation/**"
       - "src/**"
