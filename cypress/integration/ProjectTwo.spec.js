@@ -12,8 +12,8 @@ context('ProjectTwo', () => {
     cy.contains('Cycling').click()
 
     // A bit of waiting may be needed for initial data load
-    cy.get('svg', { timeout: 10000 })
-      .find('circle')
+    cy.get('svg')
+      .find('circle', { timeout: 10000 })
       .should('have.length', 4)
 
     cy.get('#cycling')

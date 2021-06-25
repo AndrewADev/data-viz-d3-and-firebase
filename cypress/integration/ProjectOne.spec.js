@@ -9,8 +9,8 @@ context('ProjectOne', () => {
     cy.contains('Project 1').click()
 
     // A bit of waiting may be needed for initial data load
-    cy.get('#chart-group', { timeout: 10000 })
-      .find('path')
+    cy.get('#chart-group')
+      .find('path', { timeout: 10000 })
       .should('have.length', 4)
 
     cy.get('#legend-group')
