@@ -28,7 +28,7 @@ jobs:
     # Note that it may be worth looking into the work-arounds mentioned there (tho I failed to
     # get them working previously)
     runs-on: windows-latest
-    timeout-minutes: 7
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
