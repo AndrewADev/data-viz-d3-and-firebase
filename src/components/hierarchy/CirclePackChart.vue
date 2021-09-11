@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid>
+  <div class="container-fluid">
     <div class="canvas">
       <svg class="circle-pack-chart" :width="totalWidth" :height="totalHeight">
         <g class="graph"
@@ -9,7 +9,7 @@
         </g>
       </svg>
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>
