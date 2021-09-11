@@ -1,24 +1,29 @@
 <template>
-  <b-card
-    title="Add Item:"
-    class="text-indigo text-left mt-3 mb-3"
-    >
-    <b-form>
-      <b-input-group>
-        <b-input-group prepend="Item Name:" class="mt-1">
-          <b-form-input id="name" v-model="name"></b-form-input>
-        </b-input-group>
-        <b-input-group prepend="Item Cost (€):" class="mt-1">
-          <b-form-input id="cost" v-model="cost" type="number"></b-form-input>
-        </b-input-group>
-        <b-btn @click="printItem" class="mt-1">Add Item</b-btn>
-
-      </b-input-group>
-    </b-form>
+  <div class="card text-indigo text-left mt-3 mb-3">
+    <div class="card-body">
+      <h4 class="card-title">Add Item:</h4>
+      <form>
+        <div class="input-group">
+          <div class="input-group mt-1">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Item Name:</div>
+            </div>
+            <input id="name" v-model="name" class="form-control" />
+          </div>
+          <div class="input-group mt-1">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Item Cost (€):</div>
+            </div>
+            <input id="cost" v-model="cost" type="number" class="form-control"/>
+          </div>
+          <button @click="printItem" type="button" class="btn btn-secondary mt-1">Add Item</button>
+        </div>
+      </form>
+    </div>
     <em slot="footer">
       <p id="error" class="text-danger">{{error}}</p>
     </em>
-  </b-card>
+  </div>
 </template>
 
 <script>
@@ -41,7 +46,7 @@ export default {
 
   methods: {
 
-    printItem (event) {
+    printItem (_) {
       if (this.cost && this.name) {
         const newItem = {
           name: this.name,
@@ -62,7 +67,6 @@ export default {
 
 <style lang="scss" scoped>
   @import 'node_modules/bootstrap/scss/bootstrap';
-  @import 'node_modules/bootstrap-vue/src/index.scss';
 
   .text-indigo {
     color: $indigo;

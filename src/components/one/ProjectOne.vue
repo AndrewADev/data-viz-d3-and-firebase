@@ -1,18 +1,18 @@
 <template>
-  <b-container class="project-header text-white m-0 h-100" fluid>
+  <div class="container-fluid project-header text-white m-0 h-100" fluid>
     <header class="py-2">
       <h2>Ninja Wonga</h2>
       <span>Monthly money tracker for ninjas...</span>
     </header>
-    <b-row class="project-main pt-4">
-      <b-col class="col-sm-12 col-md-5">
+    <div class="row project-main pt-4">
+      <div class="col col-sm-12 col-md-5">
         <add-budget-item v-on:add-item="addItem"/>
-      </b-col>
-      <b-col class="col-sm-12 col-md-5">
+      </div>
+      <div class="col col-sm-12 col-md-5">
         <donut-chart />
-      </b-col>
-    </b-row>
-  </b-container>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -38,7 +38,7 @@ export default {
     addItem (newItem) {
       this.db.collection('expenses')
         .add(newItem)
-        .then(res => {
+        .then(_ => {
           // success message or notification?
         })
         // error handling?
@@ -58,7 +58,6 @@ export default {
 
 <style lang="scss" scoped>
   @import 'node_modules/bootstrap/scss/bootstrap';
-  @import 'node_modules/bootstrap-vue/src/index.scss';
 
   .project-header {
     background-color: darken($indigo, 10%);
