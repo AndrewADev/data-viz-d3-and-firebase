@@ -1,19 +1,19 @@
 <template>
-  <b-container class="project-background grey px-0" fluid>
-    <b-container class="py-3 justify-content-center">
+  <div class="project-background grey px-0 container" fluid>
+    <div class="py-3 justify-content-center container">
       <h3 class="text-black">Hierarchical Data</h3>
-    </b-container>
-    <b-container class="project-main" fluid>
-      <b-container class="py-2 gray-text-light">
+    </div>
+    <div class="project-main container-fluid">
+      <div class="py-2 gray-text-light container">
         <p>Hierarchy example</p>
-      </b-container>
-      <b-row class="pt-4">
-        <b-col>
+      </div>
+      <div class="row pt-4">
+        <div class="col">
           <circle-pack-chart />
-        </b-col>
-      </b-row>
-    </b-container>
-  </b-container>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
