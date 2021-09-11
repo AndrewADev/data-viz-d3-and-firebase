@@ -41,12 +41,11 @@ jobs:
       - name: Start the app
         run: npm run serve:e2e &
 
-      # TODO: Cache
       - name: Install Firebase tools
-        run: curl -sL firebase.tools | bash
+        run: npm install -g firebase-tools
 
       - name: Start firebase and run e2e
-        run: firebase emulators:exec --import=./cypress/fixtures/firebase "npx cypress run"
+        run: firebase emulators:exec --import=./cypress/fixtures/firebase "npx cypress run" --debug
 
       - uses: actions/upload-artifact@v2
         if: failure()
