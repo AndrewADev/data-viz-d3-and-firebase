@@ -9,7 +9,7 @@ context('ProjectThree', () => {
     cy.contains('Project 3').click()
 
     cy.get('.graph')
-      .find('.node', { timeout: 10000 })
+      .find('.node', { timeout: 60000 })
       .should('have.length', 2)
 
     cy.get('button[aria-label="Add new employee"').click()

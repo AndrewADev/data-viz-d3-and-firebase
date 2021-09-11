@@ -10,7 +10,7 @@ context('ProjectOne', () => {
 
     // A bit of waiting may be needed for initial data load
     cy.get('#chart-group')
-      .find('path', { timeout: 10000 })
+      .find('path', { timeout: 60000 })
       .should('have.length', 4)
 
     cy.get('#legend-group')
