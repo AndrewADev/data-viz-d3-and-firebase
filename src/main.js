@@ -4,6 +4,8 @@ import App from './App.vue'
 import router from './router'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'jquery/src/jquery.js'
+import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { getDatabase } from './firestore'
 

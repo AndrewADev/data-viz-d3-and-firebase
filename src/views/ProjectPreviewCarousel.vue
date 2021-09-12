@@ -1,38 +1,59 @@
 <template>
 
-  <b-carousel
-    :interval="4000"
-    controls
-    indicators
-    img-width="1024"
-    img-height="480"
+  <div
+    id="previewCarousel"
+    class="carousel slide"
+    data-ride="carousel"
+    data-interval="4000"
   >
-    <b-carousel-slide
-      caption="Project One"
-      text="Track your ninja's budget!"
-      :img-src="ProjectOneSource"
-    />
+    <ul class="carousel-indicators">
+      <li data-target="#previewCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#previewCarousel" data-slide-to="1"></li>
+      <li data-target="#previewCarousel" data-slide-to="2"></li>
+      <li data-target="#previewCarousel" data-slide-to="3"></li>
+    </ul>
 
-    <b-carousel-slide
-      caption="Project Two"
-      text="Track your ninja's fitness!"
-      :img-src="ProjectTwoSource"
-    />
+    <div class="carousel-inner">
+      <div class="carousel-item active" >
+        <img class="d-block w-100" src="../assets/preview-project-one.png" alt="Project 1" />
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Project One</h5>
+          <p>Track your ninja's budget!</p>
+        </div>
+      </div>
+      <div class="carousel-item" >
+        <img class="d-block w-100" src="../assets/preview-project-two.png" alt="Project 2" />
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Project Two</h5>
+          <p>Track your ninja's fitness!</p>
+        </div>
+      </div>
+      <div class="carousel-item" >
+        <img class="d-block w-100" src="../assets/preview-hierarchy-example.png" alt="Hierarchy Example" />
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Project Three</h5>
+          <p>See d3 hierarchy in action!</p>
+        </div>
+      </div>
+      <div class="carousel-item" >
+        <img class="d-block w-100" src="../assets/preview-project-three.png" alt="Project 3"/>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Project Three</h5>
+          <p>Manage the ninja team!</p>
+        </div>
+      </div>
+    </div>
 
-    <b-carousel-slide
-      caption="Hierarchy Example"
-      text="See d3 hierarchy in action!"
-      class="light-slide"
-      :img-src="HierarchyExampleSource"
-    />
+    <a class="carousel-control-prev" href="#previewCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#previewCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 
-    <b-carousel-slide
-      caption="Project Three"
-      text="Manage the ninja team!"
-      class="light-slide"
-      :img-src="ProjectThreeSource"
-    />
-  </b-carousel>
 </template>
 
 <script>
