@@ -3,7 +3,6 @@
   <div
     id="previewCarousel"
     class="carousel slide"
-    data-ride="carousel"
     data-interval="4000"
   >
     <ul class="carousel-indicators">
@@ -57,6 +56,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 import ProjectOnePreview from '../assets/preview-project-one.png'
 import ProjectTwoPreview from '../assets/preview-project-two.png'
 import HierarchyExample from '../assets/preview-hierarchy-example.png'
@@ -77,6 +77,13 @@ export default {
     ProjectThreeSource () {
       return ProjectThreePreview
     }
+  },
+
+  mounted () {
+    // The "data-ride" attribute didn't seem to be working reliably for animation
+    // (whether automatically started or after user interaction). So, start it
+    // manually for now.
+    $('.carousel').carousel()
   }
 }
 </script>
