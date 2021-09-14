@@ -21,7 +21,7 @@ context('ProjectTwo', () => {
       .type('{enter}')
 
     cy.get('svg')
-      .find('circle')
+      .find('circle', { timeout: 10000 })
       .should('have.length', 5)
 
     cy.contains('Swimming').click()

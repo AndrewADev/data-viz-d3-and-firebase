@@ -1,28 +1,29 @@
 <template>
   <div id="app" class="p-0">
     <div id="nav" class="p-0 pt-1">
-      <b-container class="p-0" fluid>
-        <b-row class="mx-0">
-          <b-col cols="4">
-            <b-img :src="LogoSource" alt="D3 logo" fluid class="logo"/>
-          </b-col>
+      <div class="container-fluid p-0">
+        <div class="row mx-0">
+          <div class="col col-sm-4">
+            <img :src="LogoSource" alt="D3 logo" class="logo"/>
+          </div>
 
-          <b-col cols="7">
-            <b-nav class="p-2">
-              <b-nav-item to="/">Home</b-nav-item>
-              <b-nav-item-dropdown
-                text="Projects"
-                >
-                <b-dropdown-item to="/projects/one">Project 1</b-dropdown-item>
-                <b-dropdown-item to="/projects/two">Project 2</b-dropdown-item>
-                <b-dropdown-item to="/projects/hierarchy">Hierarchy Example</b-dropdown-item>
-                <b-dropdown-item to="/projects/three">Project 3</b-dropdown-item>
-              </b-nav-item-dropdown>
-            </b-nav>
-          </b-col>
-        </b-row>
+          <div class="col col-sm-7">
+            <ul class="nav p-2">
+              <li class="nav-item">
+                <router-link class="nav-link active" to="/">Home</router-link>
+              </li>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Projects</a>
+              <div class="dropdown-menu">
+                <router-link class="dropdown-item" to="/projects/one">Project 1</router-link>
+                <router-link class="dropdown-item" to="/projects/two">Project 2</router-link>
+                <router-link class="dropdown-item" to="/projects/hierarchy">Home</router-link>
+                <router-link class="dropdown-item" to="/projects/three">Project 3</router-link>
+              </div>
+            </ul>
+          </div>
+        </div>
         <router-view/>
-      </b-container>
+      </div>
     </div>
 
   </div>
@@ -49,7 +50,6 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    // max-height: 1vh;
     background-size: cover;
   }
   #nav {
