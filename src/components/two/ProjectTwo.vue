@@ -20,26 +20,20 @@
       </div>
       <div class="row">
         <div class="col offset-md-3 col-md-6">
-          <form class="my-4" @submit="newItem">
+          <form class="my-4" @submit="newItem" novalidate>
               <p class="gray-text-light justify-content-center">How much <span class="activity">{{activity}}</span> have you done today?</p>
-              <!--
-                  TODO: Need to replicate the validation behavior somehow
-                  test case: negative number (e.g. -50)
-                  Maybe? https://getbootstrap.com/docs/4.6/components/forms/#custom-styles
-                  tried: :class="{'is-invalid': isValidDistance}"
-               -->
-              <b-input
+              <input
                 type="number"
                 required
                 aria-invalid="Distance is required"
                 :id="activity"
                 class="form-control gray-text-light"
                 v-model="distance"
-                :state="isValidDistance"
+                :class="{'is-valid': hasValidDistance, 'is-invalid': distance && !hasValidDistance}"
+                min="0"
                 placeholder="Distance in m"
-                >
-                </b-input>
-              <div id="input-live-feedback" class="invalid-feedback">
+              />
+              <div class="invalid-feedback">
                 Enter a positive number
               </div>
           </form>
