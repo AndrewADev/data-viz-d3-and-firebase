@@ -113,8 +113,8 @@ export default {
       this.newEmployee.department = ''
     },
 
-    managerChanged (e) {
-      const manager = this.availableManagers.find(manager => manager.name === e)
+    managerChanged (_) {
+      const manager = this.availableManagers.find(manager => manager.name === this.newEmployee?.parent)
 
       if (manager) {
         this.newEmployee.department = manager.department
