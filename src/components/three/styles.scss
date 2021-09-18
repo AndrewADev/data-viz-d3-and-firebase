@@ -1,18 +1,16 @@
-@import 'node_modules/bootstrap/scss/bootstrap';
-@import 'node_modules/bootstrap-vue/src/index.scss';
-
+@import "node_modules/bootstrap/scss/bootstrap";
 $darkpink: darken(hotpink, 20%);
 
 .btn-secondary {
-    background-color: $darkpink;
-    border: 0px;
+  background-color: $darkpink;
+  border: 0px;
 
-    &:hover {
-      background-color: hotpink;
-    }
+  &:hover {
+    background-color: hotpink;
+  }
 }
 
 text {
-    font-family: Arial;
-    font-size: 22px;
+  font-family: Arial;
+  font-size: 22px;
 }

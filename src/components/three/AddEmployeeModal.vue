@@ -1,55 +1,58 @@
 <template>
-      <b-modal
-      :id="modalId"
-      :static="this.static"
-      centered
-      hide-footer
-      hide-header
-      ref="main-modal"
+  <b-modal
+    :id="modalId"
+    :static="this.static"
+    centered
+    hide-footer
+    hide-header
+    ref="main-modal"
+  >
+    <div class="text-center">
+      <h5 class="text-pink">Add New Employee</h5>
+    </div>
+    <form
+      @submit="addNewEmployee"
+      @reset="clearEmployeeFields"
+      ref="add-form"
     >
-      <div class="text-center">
-        <h5 class="text-pink">Add New Employee</h5>
+      <div class="input-group mt-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Name</span>
+        </div>
+        <input class="form-control" v-model="newEmployee.name" placeholder="Jim Halpert" />
       </div>
-      <b-form
-        @submit="addNewEmployee"
-        @reset="clearEmployeeFields"
-        ref="add-form"
+      <div
+        class="input-group mt-3"
       >
-        <b-input-group
-          prepend="Name"
-          class="mt-3"
-        >
-          <b-input v-model="newEmployee.name" placeholder="Jim Halpert"/>
-        </b-input-group>
-        <b-input-group
-          prepend="Manager"
-          class="mt-3"
-        >
-          <b-form-select v-model="newEmployee.parent" @change="managerChanged">
-            <option
-              v-for="manager in availableManagers"
-              :key="manager.id"
-              :value="manager.name"
-              :disabled="!hasFounder"
-            >
-            {{manager.name}}
-            </option>
-          </b-form-select>
-        </b-input-group>
-        <b-input-group
-          prepend="Department"
-          class="mt-3"
-        >
-          <b-input
-            :formatter="toLowerCase"
-            v-model="newEmployee.department"
-            placeholder="Sales"
-            lazy-formatter
-          />
-        </b-input-group>
-      <b-btn class="mt-3" type="submit">Add Employee</b-btn>
-      </b-form>
-    </b-modal>
+        <div class="input-group-prepend">
+          <span class="input-group-text">Manager</span>
+        </div>
+        <select class="form-control" v-model="newEmployee.parent" @change="managerChanged">
+          <option
+            v-for="manager in availableManagers"
+            :key="manager.id"
+            :value="manager.name"
+            :disabled="!hasFounder"
+          >
+          {{manager.name}}
+          </option>
+        </select>
+      </div>
+      <div class="input-group mt-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Department</span>
+        </div>
+        <b-input
+          class="form-control"
+          :formatter="toLowerCase"
+          v-model="newEmployee.department"
+          placeholder="Sales"
+          lazy-formatter
+        />
+      </div>
+      <button class="btn btn-secondary mt-3" type="submit">Add Employee</button>
+    </form>
+  </b-modal>
 </template>
 
 <script>
@@ -93,7 +96,7 @@ export default {
 
   methods: {
 
-    toLowerCase (value, event) {
+    toLowerCase (value, _) {
       return value.toLowerCase()
     },
 
@@ -110,8 +113,8 @@ export default {
       this.newEmployee.department = ''
     },
 
-    managerChanged (oEvent) {
-      const manager = this.availableManagers.find(manager => manager.name === oEvent)
+    managerChanged (e) {
+      const manager = this.availableManagers.find(manager => manager.name === e)
 
       if (manager) {
         this.newEmployee.department = manager.department
