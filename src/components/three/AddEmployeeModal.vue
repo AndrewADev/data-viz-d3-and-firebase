@@ -19,7 +19,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Name</span>
         </div>
-        <input class="form-control" v-model="newEmployee.name" placeholder="Jim Halpert" />
+        <input class="form-control" v-model="name" placeholder="Jim Halpert" />
       </div>
       <div
         class="input-group mt-3"
@@ -27,7 +27,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Manager</span>
         </div>
-        <select class="form-control" v-model="newEmployee.parent" @change="managerChanged">
+        <select class="form-control" v-model="parent" @change="managerChanged">
           <option
             v-for="manager in availableManagers"
             :key="manager.id"
@@ -42,12 +42,10 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Department</span>
         </div>
-        <b-input
+        <input
           class="form-control"
-          :formatter="toLowerCase"
-          v-model="newEmployee.department"
+          v-model="department"
           placeholder="Sales"
-          lazy-formatter
         />
       </div>
       <button class="btn btn-secondary mt-3" type="submit">Add Employee</button>
@@ -61,11 +59,9 @@ export default {
   name: 'AddEmployeeModal',
   data () {
     return {
-      newEmployee: {
-        name: '',
-        parent: '',
-        department: ''
-      }
+      name: '',
+      parent: '',
+      department: ''
     }
   },
 
@@ -91,14 +87,18 @@ export default {
      */
     hasFounder () {
       return this.availableManagers.length > 0
+    },
+
+    newEmployee () {
+      return {
+        name: this.name,
+        parent: this.parent,
+        department: this.department?.toLowerCase()
+      }
     }
   },
 
   methods: {
-
-    toLowerCase (value, _) {
-      return value.toLowerCase()
-    },
 
     addNewEmployee (e) {
       e.preventDefault()
@@ -108,16 +108,16 @@ export default {
     },
 
     clearEmployeeFields () {
-      this.newEmployee.name = ''
-      this.newEmployee.parent = ''
-      this.newEmployee.department = ''
+      this.name = ''
+      this.parent = ''
+      this.department = ''
     },
 
     managerChanged (_) {
-      const manager = this.availableManagers.find(manager => manager.name === this.newEmployee?.parent)
+      const manager = this.availableManagers.find(manager => manager.name === this.parent)
 
       if (manager) {
-        this.newEmployee.department = manager.department
+        this.department = manager.department
       }
     }
   },
