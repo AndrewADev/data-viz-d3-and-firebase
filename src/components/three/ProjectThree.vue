@@ -13,14 +13,6 @@
       :available-managers="roster"
       v-on:add-new-employee="addEmployee"
     />
-    <b-toast
-      variant="danger"
-      id="error-toast"
-      title="Entry not submitted"
-      ref="error-toast"
-    >
-      Please provide details on employee
-    </b-toast>
     <div class="container-fluid project-main">
       <div class="row pt-4">
         <div class="col">
@@ -53,9 +45,7 @@ export default {
     addEmployee (employee) {
       if (employee && employee.name && employee.department) {
         this.db.collection('employees').add(employee)
-        return
       }
-      this.$refs['error-toast'].show()
     },
 
     updateRoster (newRoster) {
