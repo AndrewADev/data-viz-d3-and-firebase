@@ -1,44 +1,46 @@
 <template>
-  <b-container class="project-background grey px-0" fluid>
-    <b-container class="py-3 justify-content-center">
+  <div class="container-fluid project-background grey px-0">
+    <div class="container py-3 justify-content-center">
       <h3 class="text-white">- The Dojo -</h3>
-    </b-container>
-    <b-container class="project-main" fluid>
-      <b-container class="py-2 gray-text-light">
+    </div>
+    <div class="container-fluid project-main">
+      <div class="container py-2 gray-text-light">
         <p>A fitness tracker for ninjas</p>
-      </b-container>
-      <b-row class="pt-4">
-        <b-col class="col-sm-12 col-md-5">
-        <b-button block @click="setGraphView(0)" :pressed.sync="options[0].state" value="cycling">Cycling</b-button>
-        <b-button block @click="setGraphView(1)" :pressed.sync="options[1].state" value="running">Running</b-button>
-        <b-button block @click="setGraphView(2)" :pressed.sync="options[2].state" value="swimming">Swimming</b-button>
-        <b-button block @click="setGraphView(3)" :pressed.sync="options[3].state" value="walking">Walking</b-button>
-        </b-col>
-        <b-col class="col-sm-12 col-lg-6">
+      </div>
+      <div class="row pt-4">
+        <div class="col col-sm-12 col-md-5">
+          <button @click="setGraphView(0)" value="cycling" type="button" class="btn btn-secondary btn-block form-control" :class="{active: options[0].state}" :aria-pressed="options[0].state">Cycling</button>
+          <button @click="setGraphView(1)" value="running" type="button" class="btn btn-secondary btn-block form-control" :class="{active: options[1].state}" :aria-pressed="options[1].state">Running</button>
+          <button @click="setGraphView(2)" value="swimming" type="button" class="btn btn-secondary btn-block form-control" :class="{active: options[2].state}" :aria-pressed="options[2].state">Swimming</button>
+          <button @click="setGraphView(3)" value="walking" type="button" class="btn btn-secondary btn-block form-control" :class="{active: options[3].state}" :aria-pressed="options[3].state">Walking</button>
+        </div>
+        <div class="col col-sm-12 col-lg-6">
           <line-chart :activity="activity" :key="activity"/>
-        </b-col>
-      </b-row>
-      <b-row >
-        <b-col class="offset-md-3 col-md-6">
-          <b-form class="my-4" @submit="newItem">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col offset-md-3 col-md-6">
+          <form class="my-4" @submit="newItem" novalidate>
               <p class="gray-text-light justify-content-center">How much <span class="activity">{{activity}}</span> have you done today?</p>
-              <b-input
+              <input
                 type="number"
                 required
                 aria-invalid="Distance is required"
                 :id="activity"
-                class="gray-text-light"
+                class="form-control gray-text-light"
                 v-model="distance"
-                :state="isValidDistance"
-                placeholder="Distance in m"></b-input>
-              <b-form-invalid-feedback id="input-live-feedback">
+                :class="{'is-valid': hasValidDistance, 'is-invalid': distance && !hasValidDistance}"
+                min="0"
+                placeholder="Distance in m"
+              />
+              <div class="invalid-feedback">
                 Enter a positive number
-              </b-form-invalid-feedback>
-          </b-form>
-        </b-col>
-      </b-row>
-    </b-container>
-    </b-container>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -92,7 +94,7 @@ export default {
     },
 
     setGraphView (selectedIdx) {
-      this.options.filter((opt, idx) => idx !== selectedIdx)
+      this.options.filter((_, idx) => idx !== selectedIdx)
         .forEach(opt => { opt.state = false })
       this.activity = this.options[selectedIdx].activity
 
@@ -113,7 +115,6 @@ export default {
 
 <style lang="scss" scoped>
   @import 'node_modules/bootstrap/scss/bootstrap';
-  @import 'node_modules/bootstrap-vue/src/index.scss';
 
   $teal-highlight: #00bfa5;
 
