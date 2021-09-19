@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { firebase } from '@firebase/app'
+import firebase from 'firebase/compat/app'
 import App from './App.vue'
 import router from './router'
 import BootstrapVue from 'bootstrap-vue'
@@ -20,6 +20,8 @@ const dbConfig = {
   messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGE_SENDER_ID,
   appId: process.env.VUE_APP_FIREBASE_MESSAGE_APP_ID
 }
+// The legacy method initializes both legacy and module versions, so
+// we will migrate this last, see: https://firebase.google.com/docs/web/modular-upgrade#update_initialization_code
 firebase.initializeApp(dbConfig)
 
 Vue.use(BootstrapVue)
