@@ -1,6 +1,7 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/firestore'
 
+// Conversion (here and elsewhere), see: https://firebase.google.com/docs/web/modular-upgrade#example_2_refactoring_a_function
 export const getDatabase = () => {
   const db = firebase.firestore()
 
