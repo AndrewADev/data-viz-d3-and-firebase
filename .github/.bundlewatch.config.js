@@ -1,12 +1,16 @@
 module.exports = {
   files: [
     {
-      path: 'dist/**/*.js',
+      path: 'dist/**/app.*.js',
+      maxSize: '50kB'
+    },
+    {
+      path: 'dist/**/app.*.css',
       maxSize: '200kB'
     },
     {
-      path: 'dist/**/*.css',
-      maxSize: '200kB'
+      path: 'dist/**/*-vendors.*.css',
+      maxSize: '50kB'
     },
     {
       path: 'dist/**/*-vendors.*.js',
