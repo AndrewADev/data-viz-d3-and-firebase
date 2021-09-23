@@ -5,7 +5,7 @@ import 'firebase/compat/firestore'
 export const getDatabase = () => {
   const db = firebase.firestore()
 
-  if (process.env.VUE_APP_FIREBASE_HOST === 'emulator') {
+  if (process.env.VUE_APP_FIREBASE_BACKEND === 'emulator') {
     // eslint-disable-next-line no-console
     console.info('Connecting to Firebase emulator...')
     // Needed due to Cypress, in order to keep communication open to Firebase with
