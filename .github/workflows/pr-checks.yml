@@ -1,10 +1,6 @@
 name: "Pull Request Checks"
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [synchronize, opened]
+  - pull_request
 
 jobs:
   check_bundlesize:
@@ -12,17 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v2
+      - uses: andresz1/size-limit-action@v1
         with:
-          node-version: 14
-      
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
-        # For now, install dev dependencies too, since we rely on vue-cli-service
-
-      - uses: jackyef/bundlewatch-gh-action@0.2.0
-        with:
-          build-script: npm run build
-          bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
-          bundlewatch-config: .github/.bundlewatch.config.js
+          github_token: ${{ secrets.GITHUB_TOKEN }}
   
