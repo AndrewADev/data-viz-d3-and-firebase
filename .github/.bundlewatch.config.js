@@ -1,4 +1,7 @@
 module.exports = {
+  trackBranches: [
+    'main'
+  ],
   files: [
     {
       path: 'dist/**/app.*.js',
