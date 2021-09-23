@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve --port 8440",
     "serve:e2e": "npm run serve -- --mode e2e",
+    "size": "npm run build && size-limit",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lint:ci": "vue-cli-service lint --no-fix",
@@ -27,6 +28,8 @@
     "vue-router": "^3.5.1"
   },
   "devDependencies": {
+    "@size-limit/file": "^5.0.4",
+    "@size-limit/webpack": "^5.0.4",
     "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-plugin-eslint": "^4.5.13",
     "@vue/cli-plugin-unit-jest": "^4.5.13",
@@ -42,6 +45,7 @@
     "looks-same": "^7.3.0",
     "node-sass": "^6.0.0",
     "sass-loader": "^10.2.0",
+    "size-limit": "^5.0.4",
     "vue-template-compiler": "^2.6.14"
   }
 }
