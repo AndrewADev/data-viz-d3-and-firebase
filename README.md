@@ -1,8 +1,6 @@
 # data-viz-d3-and-firebase
 
-This project combines the exercises of Shaun Pelling's D3.js & Firebase course with a Vue SPA (as opposed to Vanilla JS and Material design.)
-
-Note that the app initially used Bootstrap-Vue for most UI components, but that a conversion to 'pure' Vue is underway, as the Bootstrap-Vue project has fallen behind on updates, and does not support Vue 3 (which we want to upgrade to) nor Bootstrap 5.
+This project combines the exercises of Shaun Pelling's D3.js & Firebase course with a Vue SPA and Bootstrap (as opposed to Vanilla JS and Material design.)
 
 ![What the App looks like](./media/home-preview.png)
 

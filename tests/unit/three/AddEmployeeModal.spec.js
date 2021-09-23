@@ -1,9 +1,7 @@
-import BootstrapVue from 'bootstrap-vue'
 import { createLocalVue, mount } from '@vue/test-utils'
 import AddEmployeeModal from '@/components/three/AddEmployeeModal'
 
 const localVue = createLocalVue()
-localVue.use(BootstrapVue)
 
 describe('AddEmployeeModal', () => {
   // i.e. does validation instead of disappearing
