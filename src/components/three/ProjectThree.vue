@@ -5,11 +5,14 @@
       <h3 class="text-white">Ninja Corp</h3>
     </div>
     <div class="container-fluid py-3 mx-0  project-subtitle">
-        <p class="text-grey">The Number ONE Ninja Company</p>
-        <button v-b-modal.add-employee-modal class="rounded-pill btn btn-secondary add-button">+</button>
+      <p class="text-grey">The Number ONE Ninja Company</p>
+      <button
+        data-toggle="modal"
+        data-target="#add-employee-modal"
+        class="rounded-pill btn btn-secondary add-button">+</button>
     </div>
     <add-employee-modal
-      id="add-employee-modal"
+      modalId="add-employee-modal"
       :available-managers="roster"
       v-on:add-new-employee="addEmployee"
     />
