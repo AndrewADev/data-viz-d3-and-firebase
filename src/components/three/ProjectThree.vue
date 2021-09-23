@@ -9,6 +9,7 @@
       <button
         data-toggle="modal"
         data-target="#add-employee-modal"
+        aria-label="Add new employee"
         class="rounded-pill btn btn-secondary add-button">+</button>
     </div>
     <add-employee-modal
