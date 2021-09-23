@@ -1,5 +1,8 @@
 name: "Pull Request Checks"
 on:
+  push:
+    branches:
+      - main
   pull_request:
     types: [synchronize, opened]
 
