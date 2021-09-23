@@ -1,68 +1,95 @@
 <template>
-      <b-modal
-      :id="modalId"
-      :static="this.static"
-      centered
-      hide-footer
-      hide-header
-      ref="main-modal"
-    >
-      <div class="text-center">
-        <h5 class="text-pink">Add New Employee</h5>
-      </div>
-      <b-form
-        @submit="addNewEmployee"
-        @reset="clearEmployeeFields"
-        ref="add-form"
-      >
-        <b-input-group
-          prepend="Name"
-          class="mt-3"
-        >
-          <b-input v-model="newEmployee.name" placeholder="Jim Halpert"/>
-        </b-input-group>
-        <b-input-group
-          prepend="Manager"
-          class="mt-3"
-        >
-          <b-form-select v-model="newEmployee.parent" @change="managerChanged">
-            <option
-              v-for="manager in availableManagers"
-              :key="manager.id"
-              :value="manager.name"
-              :disabled="!hasFounder"
+  <div
+    :id="modalId"
+    :static="this.static"
+    class="modal"
+    ref="main-modal"
+    aria-labelledby="add-new-employee-header"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="text-center">
+            <h5 id="add-new-employee-header" class="text-pink">Add New Employee</h5>
+          </div>
+        </div>
+        <div class="modal-body">
+          <form
+            @submit="addNewEmployee"
+            @reset="clearEmployeeFields"
+            ref="add-form"
+            novalidate
+          >
+            <div class="input-group mt-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Name</span>
+              </div>
+              <input class="form-control" :class="{'is-invalid': this.touched && !this.isNameValid}" v-model="name" placeholder="Jim Halpert" required/>
+              <div class="invalid-feedback">
+                Enter the employee's name
+              </div>
+            </div>
+            <div
+              class="input-group mt-3"
             >
-            {{manager.name}}
-            </option>
-          </b-form-select>
-        </b-input-group>
-        <b-input-group
-          prepend="Department"
-          class="mt-3"
-        >
-          <b-input
-            :formatter="toLowerCase"
-            v-model="newEmployee.department"
-            placeholder="Sales"
-            lazy-formatter
-          />
-        </b-input-group>
-      <b-btn class="mt-3" type="submit">Add Employee</b-btn>
-      </b-form>
-    </b-modal>
+              <div class="input-group-prepend">
+                <span class="input-group-text">Manager</span>
+              </div>
+              <select
+                class="form-control"
+                :class="{'is-invalid': this.touched && !this.isParentValid}"
+                v-model="parent"
+                @change="managerChanged"
+                required
+              >
+                <option
+                  v-for="manager in availableManagers"
+                  :key="manager.id"
+                  :value="manager.name"
+                  :disabled="!hasFounder"
+                >
+                {{manager.name}}
+                </option>
+              </select>
+              <div class="invalid-feedback">
+                Enter the manager's name
+              </div>
+            </div>
+            <div class="input-group mt-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Department</span>
+              </div>
+              <input
+                class="form-control"
+                :class="{'is-invalid': this.touched && !this.isDeptValid}"
+                v-model="department"
+                placeholder="Sales"
+                required
+              />
+              <div class="invalid-feedback">
+                Enter a department
+              </div>
+            </div>
+            <button class="btn btn-secondary mt-3" type="submit">Add Employee</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+
+import $ from 'jquery'
 
 export default {
   name: 'AddEmployeeModal',
   data () {
     return {
-      newEmployee: {
-        name: '',
-        parent: '',
-        department: ''
-      }
+      name: '',
+      parent: '',
+      department: '',
+      touched: false
     }
   },
 
@@ -88,33 +115,58 @@ export default {
      */
     hasFounder () {
       return this.availableManagers.length > 0
+    },
+
+    isNameValid () {
+      return this.name !== ''
+    },
+
+    isParentValid () {
+      return this.parent !== '' || !this.hasFounder
+    },
+
+    isDeptValid () {
+      return this.department !== ''
+    },
+
+    hasValidInput () {
+      return this.isNameValid && this.isParentValid && this.isDeptValid
+    },
+
+    newEmployee () {
+      return {
+        name: this.name,
+        parent: this.parent,
+        department: this.department?.toLowerCase()
+      }
     }
   },
 
   methods: {
 
-    toLowerCase (value, event) {
-      return value.toLowerCase()
-    },
-
     addNewEmployee (e) {
       e.preventDefault()
+      this.touched = true
+
+      if (!this.hasValidInput) return false
+
       this.$emit('add-new-employee', this.newEmployee)
       this.$refs['add-form'].reset()
-      this.$refs['main-modal'].hide()
+      $(`#${this.modalId}`).modal('hide')
     },
 
     clearEmployeeFields () {
-      this.newEmployee.name = ''
-      this.newEmployee.parent = ''
-      this.newEmployee.department = ''
+      this.name = ''
+      this.parent = ''
+      this.department = ''
+      this.touched = false
     },
 
-    managerChanged (oEvent) {
-      const manager = this.availableManagers.find(manager => manager.name === oEvent)
+    managerChanged (_) {
+      const manager = this.availableManagers.find(manager => manager.name === this.parent)
 
       if (manager) {
-        this.newEmployee.department = manager.department
+        this.department = manager.department
       }
     }
   },

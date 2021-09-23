@@ -12,12 +12,11 @@ context('ProjectThree', () => {
       .find('.node', { timeout: 10000 })
       .should('have.length', 2)
 
-    // TODO: Could really use better attrs to query - ARIA or name?
-    cy.get('button').click()
+    cy.get('button[aria-label="Add new employee"').click()
 
     cy.get('[placeholder^="Jim"]').type('Rick')
 
-    cy.get('.custom-select').select('Greg')
+    cy.get('select').select('Greg')
 
     cy.get('[placeholder^="Sales"]')
       .clear()

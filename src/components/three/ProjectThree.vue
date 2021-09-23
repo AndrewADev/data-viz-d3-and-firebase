@@ -1,34 +1,30 @@
 <template>
-  <b-container class="project-background grey px-0" fluid>
+  <div class="container-fluid project-background grey px-0">
     <title>Ninja Corp!</title>
-    <b-container class="py-3 justify-content-center project-header" fluid>
+    <div class="container-fluid py-3 justify-content-center project-header">
       <h3 class="text-white">Ninja Corp</h3>
-    </b-container>
-    <b-container class="py-3 mx-0  project-subtitle" fluid>
-        <p class="text-grey">The Number ONE Ninja Company</p>
-        <b-button pill v-b-modal.add-employee-modal class="add-button">+</b-button>
-    </b-container>
+    </div>
+    <div class="container-fluid py-3 mx-0  project-subtitle">
+      <p class="text-grey">The Number ONE Ninja Company</p>
+      <button
+        data-toggle="modal"
+        data-target="#add-employee-modal"
+        aria-label="Add new employee"
+        class="rounded-pill btn btn-secondary add-button">+</button>
+    </div>
     <add-employee-modal
-      id="add-employee-modal"
+      modalId="add-employee-modal"
       :available-managers="roster"
       v-on:add-new-employee="addEmployee"
     />
-    <b-toast
-      variant="danger"
-      id="error-toast"
-      title="Entry not submitted"
-      ref="error-toast"
-    >
-      Please provide details on employee
-    </b-toast>
-    <b-container class="project-main" fluid>
-      <b-row class="pt-4">
-        <b-col>
+    <div class="container-fluid project-main">
+      <div class="row pt-4">
+        <div class="col">
           <organization-diagram class="chart" @roster-change="updateRoster"/>
-        </b-col>
-      </b-row>
-    </b-container>
-  </b-container>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -53,9 +49,7 @@ export default {
     addEmployee (employee) {
       if (employee && employee.name && employee.department) {
         this.db.collection('employees').add(employee)
-        return
       }
-      this.$refs['error-toast'].show()
     },
 
     updateRoster (newRoster) {

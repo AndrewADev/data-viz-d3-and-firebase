@@ -6,7 +6,8 @@ const localVue = createLocalVue()
 localVue.use(BootstrapVue)
 
 describe('AddEmployeeModal', () => {
-  it('passes up add employee event on button click', () => {
+  // i.e. does validation instead of disappearing
+  it('does not disappear on button click', () => {
     const wrapper = mount(AddEmployeeModal, {
       attachTo: document.body,
       localVue,
@@ -17,7 +18,7 @@ describe('AddEmployeeModal', () => {
 
     const button = wrapper.find('button')
     button.trigger('click')
-    expect(wrapper.emitted('add-new-employee')).toBeTruthy()
+    expect(wrapper.isVisible).toBeTruthy()
     wrapper.destroy()
   })
 })
