@@ -1,9 +1,7 @@
-import BootstrapVue from 'bootstrap-vue'
 import { createLocalVue, mount } from '@vue/test-utils'
 import AddBudgetItem from '../../../src/components/one/AddBudgetItem'
 
 const localVue = createLocalVue()
-localVue.use(BootstrapVue)
 
 describe('AddBudgetItem', () => {
   let wrapper

@@ -40,7 +40,6 @@ export default {
 
 <style lang="scss" scoped>
   @import 'node_modules/bootstrap/scss/bootstrap';
-  @import 'node_modules/bootstrap-vue/src/index.scss';
 
   .project-background {
     // background-color: $gray-800;

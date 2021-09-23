@@ -2,11 +2,9 @@ import Vue from 'vue'
 import firebase from 'firebase/compat/app'
 import App from './App.vue'
 import router from './router'
-import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap'
 import 'jquery/src/jquery.js'
-import 'bootstrap/dist/js/bootstrap.min.js'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { getDatabase } from './firestore'
 
 Vue.config.productionTip = false
@@ -23,8 +21,6 @@ const dbConfig = {
 // The legacy method initializes both legacy and module versions, so
 // we will migrate this last, see: https://firebase.google.com/docs/web/modular-upgrade#update_initialization_code
 firebase.initializeApp(dbConfig)
-
-Vue.use(BootstrapVue)
 
 Vue.prototype.$firestore = getDatabase()
 
