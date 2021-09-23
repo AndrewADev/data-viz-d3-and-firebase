@@ -1,10 +1,12 @@
 
 module.exports = [
   {
+    name: 'App JS',
     path: 'dist/**/app.*.js',
     limit: '13kB'
   },
   {
+    name: 'App CSS',
     path: 'dist/**/app.*.css',
     limit: '235kB',
     // prevent injection of style-loader runtime, see last part of:
@@ -12,6 +14,7 @@ module.exports = [
     webpack: false
   },
   {
+    name: 'Vendor CSS',
     path: 'dist/**/*-vendors.*.css',
     limit: '43kB',
     // prevent injection of style-loader runtime, see last part of:
@@ -19,6 +22,7 @@ module.exports = [
     webpack: false
   },
   {
+    name: 'Vendor JS',
     path: 'dist/**/*-vendors.*.js',
     limit: '492kB'
   }
