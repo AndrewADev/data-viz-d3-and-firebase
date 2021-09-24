@@ -114,9 +114,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "node_modules/bootstrap/scss/functions";
-  @import "node_modules/bootstrap/scss/variables";
-  @import "node_modules/bootstrap/scss/mixins";
+  @import '@/styles/theming';
 
   $teal-highlight: #00bfa5;
 
