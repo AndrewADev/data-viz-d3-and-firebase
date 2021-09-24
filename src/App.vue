@@ -16,7 +16,7 @@
               <div class="dropdown-menu">
                 <router-link class="dropdown-item" to="/projects/one">Project 1</router-link>
                 <router-link class="dropdown-item" to="/projects/two">Project 2</router-link>
-                <router-link class="dropdown-item" to="/projects/hierarchy">Home</router-link>
+                <router-link class="dropdown-item" to="/projects/hierarchy">Hierarchy</router-link>
                 <router-link class="dropdown-item" to="/projects/three">Project 3</router-link>
               </div>
             </ul>
