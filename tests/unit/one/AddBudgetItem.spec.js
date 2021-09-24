@@ -1,14 +1,11 @@
-import { createLocalVue, mount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import AddBudgetItem from '../../../src/components/one/AddBudgetItem'
-
-const localVue = createLocalVue()
 
 describe('AddBudgetItem', () => {
   let wrapper
 
   beforeEach(() => {
     wrapper = mount(AddBudgetItem, {
-      localVue
     })
   })
 
