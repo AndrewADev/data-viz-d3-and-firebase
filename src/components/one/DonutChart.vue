@@ -13,6 +13,8 @@ import tip from 'd3-tip'
 // TODO: document difference
 import { legendColor } from 'd3-svg-legend'
 
+import { collection, doc, deleteDoc, onSnapshot } from 'firebase/firestore'
+
 export default {
   name: 'DonutChart',
 
@@ -165,12 +167,12 @@ export default {
         })
         .on('click', (d) => {
           const { id } = d.data
-          this.db.collection('expenses').doc(id).delete()
+          deleteDoc(doc(this.db, 'expenses', id))
         })
     },
 
     subscribeFirebaseUpdates () {
-      this.db.collection('expenses').onSnapshot(res => {
+      onSnapshot(collection(this.db, 'expenses'), res => {
         res.docChanges().forEach(change => {
           const doc = { ...change.doc.data(), id: change.doc.id }
           switch (change.type) {
