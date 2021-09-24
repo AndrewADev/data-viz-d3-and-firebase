@@ -18,6 +18,7 @@
 <script>
 import AddBudgetItem from './AddBudgetItem'
 import DonutChart from './DonutChart'
+import { collection, addDoc } from 'firebase/firestore'
 
 export default {
   name: 'ProjectOne',
@@ -36,8 +37,7 @@ export default {
     },
 
     addItem (newItem) {
-      this.db.collection('expenses')
-        .add(newItem)
+      addDoc(collection(this.db, 'expenses'), newItem)
         .then(_ => {
           // success message or notification?
         })
