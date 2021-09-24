@@ -56,7 +56,7 @@ export default {
   methods: {
 
     arcTweenEnter (d) {
-      let i = d3.interpolate(d.endAngle, d.startAngle)
+      const i = d3.interpolate(d.endAngle, d.startAngle)
 
       return (t) => {
         d.startAngle = i(t)
@@ -65,7 +65,7 @@ export default {
     },
 
     arcTweenExit (d) {
-      let i = d3.interpolate(d.startAngle, d.endAngle)
+      const i = d3.interpolate(d.startAngle, d.endAngle)
 
       return (t) => {
         d.startAngle = i(t)
@@ -85,7 +85,7 @@ export default {
           // non-scoped styles
           let content = `<div class="name">${d.data.name}</div>`
           content += `<div class="cost">${d.data.cost}</div>`
-          content += `<div class="delete">Click slice to delete</div>`
+          content += '<div class="delete">Click slice to delete</div>'
           return content
         })
       graph.call(this.tooltip)
@@ -94,7 +94,7 @@ export default {
     update (data) {
       const vm = this
       function arcTweenUpdate (d) {
-        let i = d3.interpolate(this._current, d)
+        const i = d3.interpolate(this._current, d)
         this._current = i(1)
 
         return function (t) {
@@ -104,7 +104,7 @@ export default {
 
       const graph = d3.select('g')
 
-      const color = d3.scaleOrdinal(d3['schemeSet3'])
+      const color = d3.scaleOrdinal(d3.schemeSet3)
 
       const legendGroup = d3.select('g#legend-group')
 
@@ -179,13 +179,15 @@ export default {
             case 'added':
               this.chartData.push(doc)
               break
-            case 'modified':
+            case 'modified': {
               const index = this.chartData.findIndex(item => item.id === doc.id)
               this.chartData[index] = doc
               break
-            case 'removed':
+            }
+            case 'removed': {
               this.chartData = this.chartData.filter(item => item.id !== doc.id)
               break
+            }
             default:
               break
           }
