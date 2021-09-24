@@ -8,7 +8,7 @@ module.exports = [
   {
     name: 'App CSS',
     path: 'dist/**/app.*.css',
-    limit: '235kB',
+    limit: '1.1kB',
     // prevent injection of style-loader runtime, see last part of:
     // https://github.com/ai/size-limit#config
     webpack: false
@@ -24,6 +24,6 @@ module.exports = [
   {
     name: 'Vendor JS',
     path: 'dist/**/*-vendors.*.js',
-    limit: '492kB'
+    limit: '362kB'
   }
 ]

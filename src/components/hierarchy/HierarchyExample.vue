@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import 'node_modules/bootstrap/scss/bootstrap';
+  @import '@/styles/theming';
 
   .project-background {
     // background-color: $gray-800;

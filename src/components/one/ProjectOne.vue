@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import 'node_modules/bootstrap/scss/bootstrap';
+  @import '@/styles/theming';
 
   .project-header {
     background-color: darken($indigo, 10%);
