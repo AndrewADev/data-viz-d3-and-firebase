@@ -1,9 +1,7 @@
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/firestore'
+import { getFirestore } from 'firebase/firestore'
 
-// Conversion (here and elsewhere), see: https://firebase.google.com/docs/web/modular-upgrade#example_2_refactoring_a_function
-export const getDatabase = () => {
-  const db = firebase.firestore()
+export const configureDatabase = (app) => {
+  const db = getFirestore(app)
 
   if (process.env.VUE_APP_FIREBASE_BACKEND === 'emulator') {
     // eslint-disable-next-line no-console
