@@ -30,6 +30,7 @@
 <script>
 import AddEmployeeModal from './AddEmployeeModal'
 import OrganizationDiagram from './OrganizationDiagram'
+import { collection, addDoc } from 'firebase/firestore'
 
 export default {
   name: 'ProjectThree',
@@ -48,7 +49,7 @@ export default {
   methods: {
     addEmployee (employee) {
       if (employee && employee.name && employee.department) {
-        this.db.collection('employees').add(employee)
+        addDoc(collection(this.db, 'employees'), employee)
       }
     },
 

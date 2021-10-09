@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import firebase from 'firebase/compat/app'
+import { initializeApp } from 'firebase/app'
 import App from './App.vue'
 import router from './router'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap'
 import 'jquery/src/jquery.js'
-import { getDatabase } from './firestore'
+import { configureDatabase } from './firestore'
 
 Vue.config.productionTip = false
 
@@ -18,11 +18,10 @@ const dbConfig = {
   messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGE_SENDER_ID,
   appId: process.env.VUE_APP_FIREBASE_MESSAGE_APP_ID
 }
-// The legacy method initializes both legacy and module versions, so
-// we will migrate this last, see: https://firebase.google.com/docs/web/modular-upgrade#update_initialization_code
-firebase.initializeApp(dbConfig)
 
-Vue.prototype.$firestore = getDatabase()
+const firebaseApp = initializeApp(dbConfig)
+
+Vue.prototype.$firestore = configureDatabase(firebaseApp)
 
 new Vue({
   router,

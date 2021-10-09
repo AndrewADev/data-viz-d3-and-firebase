@@ -15,6 +15,8 @@
 <script>
 import * as d3 from 'd3'
 
+import { collection, onSnapshot } from 'firebase/firestore'
+
 export default {
   name: 'OrganizationDiagram',
   data () {
@@ -116,7 +118,7 @@ export default {
 
     subscribeToFirebaseUpdates () {
       let data = []
-      this.db.collection('employees').onSnapshot(res => {
+      onSnapshot(collection(this.db, 'employees'), res => {
         res.docChanges().forEach(change => {
           const doc = { ...change.doc.data(), id: change.doc.id }
 
