@@ -30,6 +30,7 @@
 <script>
 import AddEmployeeModal from './AddEmployeeModal'
 import OrganizationDiagram from './OrganizationDiagram'
+import { collection, addDoc } from 'firebase/firestore'
 
 export default {
   name: 'ProjectThree',

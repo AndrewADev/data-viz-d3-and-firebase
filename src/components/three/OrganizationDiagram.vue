@@ -15,6 +15,8 @@
 <script>
 import * as d3 from 'd3'
 
+import { collection, onSnapshot } from 'firebase/firestore'
+
 export default {
   name: 'OrganizationDiagram',
   data () {
