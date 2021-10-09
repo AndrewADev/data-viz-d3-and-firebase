@@ -45,6 +45,7 @@
 
 <script>
 import LineChart from './LineChart'
+import { collection, addDoc } from 'firebase/firestore'
 
 import { ACTIVITY } from './constants'
 
@@ -82,7 +83,7 @@ export default {
       this.isValidDistance = this.hasValidDistance
 
       if (this.hasValidDistance) {
-        this.db.collection('activities').add({
+        addDoc(collection(this.db, 'activities'), {
           activity: this.activity,
           distance: Number.parseInt(this.distance),
           date: new Date().toString()

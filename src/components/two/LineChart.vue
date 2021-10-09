@@ -22,6 +22,7 @@
 <script>
 
 import * as d3 from 'd3'
+import { collection, onSnapshot } from 'firebase/firestore'
 
 import { ACTIVITY } from './constants'
 
@@ -184,7 +185,7 @@ export default {
 
     subscribeToFirebaseUpdates () {
       let data = []
-      this.db.collection('activities').onSnapshot(res => {
+      onSnapshot(collection(this.db, 'activities'), res => {
         res.docChanges().forEach(change => {
           const doc = { ...change.doc.data(), id: change.doc.id }
 
@@ -235,7 +236,6 @@ export default {
   .x-axis path, .y-axis path, .x-axis line, .y-axis line {
     stroke: #ccc;
     color: #ccc;
-    // fill: #ccc !important;
   }
 
   .x-axis text, .y-axis text {
