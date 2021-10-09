@@ -42,12 +42,10 @@ export default {
   @import '@/styles/theming';
 
   .project-background {
-    // background-color: $gray-800;
     min-width: 100vw;
   }
 
   .project-main {
-    // background-color: $gray-900;
     min-height: 100vh;
     width: 100%;
   }
