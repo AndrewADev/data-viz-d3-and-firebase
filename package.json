@@ -17,7 +17,7 @@
   "dependencies": {
     "babel-plugin-inline-dotenv": "^1.6.0",
     "bootstrap": "^4.6.1",
-    "core-js": "^3.19.1",
+    "core-js": "^3.20.1",
     "d3": "^5.11.0",
     "d3-svg-legend": "^2.25.6",
     "d3-tip": "^0.9.1",
