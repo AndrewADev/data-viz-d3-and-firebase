@@ -14,7 +14,7 @@
 import ProjectPreviewCarousel from './ProjectPreviewCarousel'
 
 export default {
-  name: 'home',
+  name: 'HomeView',
   components: {
     ProjectPreviewCarousel
   }
