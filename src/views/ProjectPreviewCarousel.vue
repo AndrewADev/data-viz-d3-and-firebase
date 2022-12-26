@@ -55,37 +55,26 @@
 
 </template>
 
-<script>
+<script setup>
 import $ from 'jquery'
 import ProjectOnePreview from '../assets/preview-project-one.png'
 import ProjectTwoPreview from '../assets/preview-project-two.png'
 import HierarchyExample from '../assets/preview-hierarchy-example.png'
 import ProjectThreePreview from '../assets/preview-project-three.png'
+import { computed, onMounted } from 'vue'
 
-export default {
-  name: 'ProjectPreviewCarousel',
-  computed: {
-    ProjectOneSource () {
-      return ProjectOnePreview
-    },
-    ProjectTwoSource () {
-      return ProjectTwoPreview
-    },
-    HierarchyExampleSource () {
-      return HierarchyExample
-    },
-    ProjectThreeSource () {
-      return ProjectThreePreview
-    }
-  },
+const ProjectOneSource = computed(() => ProjectOnePreview)
+const ProjectTwoSource = computed(() => ProjectTwoPreview)
+const HierarchyExampleSource = computed(() => HierarchyExample)
+const ProjectThreeSource = computed(() => ProjectThreePreview)
 
-  mounted () {
-    // The "data-ride" attribute didn't seem to be working reliably for animation
-    // (whether automatically started or after user interaction). So, start it
-    // manually for now.
-    $('.carousel').carousel()
-  }
-}
+onMounted(() => {
+  // The "data-ride" attribute didn't seem to be working reliably for animation
+  // (whether automatically started or after user interaction). So, start it
+  // manually for now.
+  $('.carousel').carousel()
+})
+
 </script>
 
 <style lang="scss" scoped>
