@@ -1,30 +1,16 @@
 <template>
   <div id="app" class="p-0">
-    <div id="nav" class="p-0 pt-1">
-      <div class="container-fluid p-0">
-        <div class="row mx-0">
-          <div class="col col-sm-4">
-            <img :src="LogoSource" alt="D3 logo" class="logo"/>
-          </div>
+    <NavBar :root-links="rootItems" dropdown-name="Projects" :dropdown-links="dropdownItems" />
 
-          <div class="col col-sm-7">
-            <NavItems :root-links="rootItems" dropdown-name="Projects" :dropdown-links="dropdownItems" />
-          </div>
-        </div>
-        <router-view/>
-      </div>
-    </div>
+    <router-view/>
 
   </div>
 </template>
 
 <script setup>
-import Logo from '@/assets/d3.png'
 import { computed } from 'vue'
-import NavItems from '@/components/NavDropdown/NavItems.vue'
+import { NavBar } from '@/components'
 import { home, projects } from './router'
-
-const LogoSource = computed(() => Logo)
 
 const rootItems = computed(() => {
   return [{
