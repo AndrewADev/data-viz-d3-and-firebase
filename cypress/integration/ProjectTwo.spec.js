@@ -6,7 +6,7 @@ context('ProjectTwo', () => {
 
     // Navigate as the user would (tests that path too, prevents accidental deep-link-only)
     cy.contains('Projects').click()
-    cy.contains('Project 2').click()
+    cy.contains('Project Two').click()
 
     // make sure we have the right activity
     cy.contains('Cycling').click()
