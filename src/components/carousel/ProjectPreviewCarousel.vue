@@ -39,7 +39,7 @@ import $ from 'jquery'
 import CarouselItem from './CarouselItem.vue'
 import PreviousButton from './PreviousButton.vue'
 import NextButton from './NextButton.vue'
-import { defineProps, onMounted } from 'vue'
+import { onMounted } from 'vue'
 
 defineProps({
   projects: {

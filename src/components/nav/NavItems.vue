@@ -19,7 +19,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 import NavDropdown from './NavDropdown.vue'
 
 defineProps({
