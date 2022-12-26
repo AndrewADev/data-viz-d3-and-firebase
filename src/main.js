@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import { initializeApp } from 'firebase/app'
 import App from './App.vue'
-import router from './router'
+import { router } from '@/router'
+import Router from 'vue-router'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap'
 import 'jquery/src/jquery.js'
@@ -22,6 +23,7 @@ const dbConfig = {
 const firebaseApp = initializeApp(dbConfig)
 
 Vue.prototype.$firestore = configureDatabase(firebaseApp)
+Vue.use(Router)
 
 new Vue({
   router,

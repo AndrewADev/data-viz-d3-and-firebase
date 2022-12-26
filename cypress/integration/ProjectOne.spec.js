@@ -6,7 +6,7 @@ context('ProjectOne', () => {
 
     // Navigate as the user would (tests that path too, prevents accidental deep-link-only)
     cy.contains('Projects').click()
-    cy.contains('Project 1').click()
+    cy.contains('Project One').click()
 
     // A bit of waiting may be needed for initial data load
     cy.get('#chart-group')

@@ -6,7 +6,7 @@ context('ProjectThree', () => {
 
     // Navigate as the user would (tests that path too, prevents accidental deep-link-only)
     cy.contains('Projects').click()
-    cy.contains('Project 3').click()
+    cy.contains('Project Three').click()
 
     cy.get('.graph')
       .find('.node', { timeout: 10000 })
