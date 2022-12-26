@@ -30,7 +30,7 @@
       <div class="carousel-item" >
         <img class="d-block w-100" :src="HierarchyExampleSource" alt="Hierarchy Example" />
         <div class="carousel-caption d-none d-md-block">
-          <h5>Project Three</h5>
+          <h5>Hierarchy Example</h5>
           <p>See d3 hierarchy in action!</p>
         </div>
       </div>
