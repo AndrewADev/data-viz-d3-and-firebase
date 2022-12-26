@@ -6,12 +6,12 @@
         <p>Use the links above to navigate to the projects.</p>
       </div>
     </div>
-    <project-preview-carousel />
+    <ProjectPreviewCarousel />
   </div>
 </template>
 
 <script>
-import ProjectPreviewCarousel from './ProjectPreviewCarousel'
+import ProjectPreviewCarousel from '../components/carousel/ProjectPreviewCarousel.vue'
 
 export default {
   name: 'HomeView',

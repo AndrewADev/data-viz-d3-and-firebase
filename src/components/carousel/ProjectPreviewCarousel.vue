@@ -27,13 +27,13 @@
 
 <script setup>
 import $ from 'jquery'
-import ProjectOnePreview from '../assets/preview-project-one.png'
-import ProjectTwoPreview from '../assets/preview-project-two.png'
-import HierarchyExample from '../assets/preview-hierarchy-example.png'
-import ProjectThreePreview from '../assets/preview-project-three.png'
-import CarouselItem from '../components/carousel/CarouselItem.vue'
-import PreviousButton from '../components/carousel/PreviousButton.vue'
-import NextButton from '../components/carousel/NextButton.vue'
+import ProjectOnePreview from '../../assets/preview-project-one.png'
+import ProjectTwoPreview from '../../assets/preview-project-two.png'
+import HierarchyExample from '../../assets/preview-hierarchy-example.png'
+import ProjectThreePreview from '../../assets/preview-project-three.png'
+import CarouselItem from './CarouselItem.vue'
+import PreviousButton from './PreviousButton.vue'
+import NextButton from './NextButton.vue'
 import { computed, onMounted } from 'vue'
 
 const ProjectOneSource = computed(() => ProjectOnePreview)
