@@ -19,14 +19,8 @@
       <CarouselItem heading="Project Three" description="Manage the ninja team!" alt-text="Project 3" :img-src="ProjectThreeSource"/>
     </div>
 
-    <a class="carousel-control-prev" href="#previewCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#previewCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+    <PreviousButton target="#previewCarousel" />
+    <NextButton target="#previewCarousel" />
   </div>
 
 </template>
@@ -38,6 +32,8 @@ import ProjectTwoPreview from '../assets/preview-project-two.png'
 import HierarchyExample from '../assets/preview-hierarchy-example.png'
 import ProjectThreePreview from '../assets/preview-project-three.png'
 import CarouselItem from '../components/carousel/CarouselItem.vue'
+import PreviousButton from '../components/carousel/PreviousButton.vue'
+import NextButton from '../components/carousel/NextButton.vue'
 import { computed, onMounted } from 'vue'
 
 const ProjectOneSource = computed(() => ProjectOnePreview)
