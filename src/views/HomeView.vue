@@ -6,14 +6,14 @@
         <p>Use the links above to navigate to the projects.</p>
       </div>
     </div>
-    <ProjectPreviewCarousel :projects="carouselProjects" />
+    <ProjectCarousel :projects="carouselProjects" />
   </div>
 </template>
 
 <script setup>
 import { computed } from 'vue'
-import ProjectPreviewCarousel from '../components/carousel/ProjectPreviewCarousel.vue'
-import { projects } from '../config'
+import { ProjectCarousel } from '@/components'
+import { projects } from '@/config'
 
 // This must be "partially static" (can't extract to a separate variable), or it won't work.
 // See: https://forum.vuejs.org/t/vue-cli-3-project-dynamic-src-in-image-path-not-working/55375/4
