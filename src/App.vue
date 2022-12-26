@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import Logo from './assets/d3.png'
+import Logo from '@/assets/d3.png'
 import { computed } from 'vue'
 
 const LogoSource = computed(() => Logo)
