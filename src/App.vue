@@ -8,18 +8,7 @@
           </div>
 
           <div class="col col-sm-7">
-            <ul class="nav p-2">
-              <li class="nav-item">
-                <router-link class="nav-link active" to="/">Home</router-link>
-              </li>
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Projects</a>
-              <div class="dropdown-menu">
-                <router-link class="dropdown-item" to="/projects/one">Project 1</router-link>
-                <router-link class="dropdown-item" to="/projects/two">Project 2</router-link>
-                <router-link class="dropdown-item" to="/projects/hierarchy">Hierarchy</router-link>
-                <router-link class="dropdown-item" to="/projects/three">Project 3</router-link>
-              </div>
-            </ul>
+            <NavItems :root-links="rootItems" dropdown-name="Projects" :dropdown-links="dropdownItems" />
           </div>
         </div>
         <router-view/>
@@ -32,8 +21,24 @@
 <script setup>
 import Logo from '@/assets/d3.png'
 import { computed } from 'vue'
+import NavItems from '@/components/NavDropdown/NavItems.vue'
+import { home, projects } from './router'
 
 const LogoSource = computed(() => Logo)
+
+const rootItems = computed(() => {
+  return [{
+    path: home.path,
+    name: home.display
+  }]
+})
+
+const dropdownItems = computed(() => projects.map(route => {
+  return {
+    path: route.path,
+    name: route.display
+  }
+}))
 
 </script>
 
