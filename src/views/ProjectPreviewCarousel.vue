@@ -13,34 +13,10 @@
     </ul>
 
     <div class="carousel-inner">
-      <div class="carousel-item active" >
-        <img class="d-block w-100" :src="ProjectOneSource" alt="Project 1" />
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Project One</h5>
-          <p>Track your ninja's budget!</p>
-        </div>
-      </div>
-      <div class="carousel-item" >
-        <img class="d-block w-100" :src="ProjectTwoSource" alt="Project 2" />
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Project Two</h5>
-          <p>Track your ninja's fitness!</p>
-        </div>
-      </div>
-      <div class="carousel-item" >
-        <img class="d-block w-100" :src="HierarchyExampleSource" alt="Hierarchy Example" />
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Hierarchy Example</h5>
-          <p>See d3 hierarchy in action!</p>
-        </div>
-      </div>
-      <div class="carousel-item" >
-        <img class="d-block w-100" :src="ProjectThreeSource" alt="Project 3"/>
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Project Three</h5>
-          <p>Manage the ninja team!</p>
-        </div>
-      </div>
+      <CarouselItem class="active" heading="Project One" description="Track your ninja's budget!" alt-text="Project 1" :img-src="ProjectOneSource" />
+      <CarouselItem heading="Project Two" description="Track your ninja's fitness!" alt-text="Project 2" :img-src="ProjectTwoSource" />
+      <CarouselItem heading="Hierarchy Example" description="See d3 hierarchy in action!" alt-text="Hierarchy Example" :img-src="HierarchyExampleSource"/>
+      <CarouselItem heading="Project Three" description="Manage the ninja team!" alt-text="Project 3" :img-src="ProjectThreeSource"/>
     </div>
 
     <a class="carousel-control-prev" href="#previewCarousel" role="button" data-slide="prev">
@@ -61,6 +37,7 @@ import ProjectOnePreview from '../assets/preview-project-one.png'
 import ProjectTwoPreview from '../assets/preview-project-two.png'
 import HierarchyExample from '../assets/preview-hierarchy-example.png'
 import ProjectThreePreview from '../assets/preview-project-three.png'
+import CarouselItem from '../components/carousel/CarouselItem.vue'
 import { computed, onMounted } from 'vue'
 
 const ProjectOneSource = computed(() => ProjectOnePreview)
@@ -78,9 +55,5 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-  /deep/ .carousel-caption {
-    background-color: #111 ;
-    border-radius: 5px;
-    opacity: 0.80;
-  }
+
 </style>
