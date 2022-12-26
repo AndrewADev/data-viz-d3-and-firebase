@@ -6,17 +6,26 @@
     data-interval="4000"
   >
     <ul class="carousel-indicators">
-      <li data-target="#previewCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#previewCarousel" data-slide-to="1"></li>
-      <li data-target="#previewCarousel" data-slide-to="2"></li>
-      <li data-target="#previewCarousel" data-slide-to="3"></li>
+      <li
+        v-for="(_, idx) of projects"
+          :class="{active: idx === 0}"
+          :key="idx"
+          data-target="#previewCarousel"
+          :data-slide-to="idx"
+      >
+      </li>
     </ul>
 
     <div class="carousel-inner">
-      <CarouselItem class="active" heading="Project One" description="Track your ninja's budget!" alt-text="Project 1" :img-src="ProjectOneSource" />
-      <CarouselItem heading="Project Two" description="Track your ninja's fitness!" alt-text="Project 2" :img-src="ProjectTwoSource" />
-      <CarouselItem heading="Hierarchy Example" description="See d3 hierarchy in action!" alt-text="Hierarchy Example" :img-src="HierarchyExampleSource"/>
-      <CarouselItem heading="Project Three" description="Manage the ninja team!" alt-text="Project 3" :img-src="ProjectThreeSource"/>
+      <CarouselItem
+        v-for="({heading, description, altText, imgSrc}, idx) of projects"
+          :key="idx"
+          :class="{active: idx === 0}"
+          :heading="heading"
+          :description="description"
+          :alt-text="altText"
+          :img-src="imgSrc"
+      />
     </div>
 
     <PreviousButton target="#previewCarousel" />
@@ -27,19 +36,17 @@
 
 <script setup>
 import $ from 'jquery'
-import ProjectOnePreview from '../../assets/preview-project-one.png'
-import ProjectTwoPreview from '../../assets/preview-project-two.png'
-import HierarchyExample from '../../assets/preview-hierarchy-example.png'
-import ProjectThreePreview from '../../assets/preview-project-three.png'
 import CarouselItem from './CarouselItem.vue'
 import PreviousButton from './PreviousButton.vue'
 import NextButton from './NextButton.vue'
-import { computed, onMounted } from 'vue'
+import { defineProps, onMounted } from 'vue'
 
-const ProjectOneSource = computed(() => ProjectOnePreview)
-const ProjectTwoSource = computed(() => ProjectTwoPreview)
-const HierarchyExampleSource = computed(() => HierarchyExample)
-const ProjectThreeSource = computed(() => ProjectThreePreview)
+defineProps({
+  projects: {
+    type: Array,
+    default: () => []
+  }
+})
 
 onMounted(() => {
   // The "data-ride" attribute didn't seem to be working reliably for animation
