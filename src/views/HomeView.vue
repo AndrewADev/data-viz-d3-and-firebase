@@ -10,13 +10,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import ProjectPreviewCarousel from '../components/carousel/ProjectPreviewCarousel.vue'
 
-export default {
-  name: 'HomeView',
-  components: {
-    ProjectPreviewCarousel
-  }
-}
 </script>
