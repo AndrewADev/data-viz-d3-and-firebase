@@ -29,17 +29,12 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Logo from './assets/d3.png'
+import { computed } from 'vue'
 
-export default {
-  name: 'App',
-  computed: {
-    LogoSource () {
-      return Logo
-    }
-  }
-}
+const LogoSource = computed(() => Logo)
+
 </script>
 
 <style lang="scss">
