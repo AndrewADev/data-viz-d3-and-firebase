@@ -14,28 +14,28 @@
 
     <div class="carousel-inner">
       <div class="carousel-item active" >
-        <img class="d-block w-100" src="../assets/preview-project-one.png" alt="Project 1" />
+        <img class="d-block w-100" :src="ProjectOneSource" alt="Project 1" />
         <div class="carousel-caption d-none d-md-block">
           <h5>Project One</h5>
           <p>Track your ninja's budget!</p>
         </div>
       </div>
       <div class="carousel-item" >
-        <img class="d-block w-100" src="../assets/preview-project-two.png" alt="Project 2" />
+        <img class="d-block w-100" :src="ProjectTwoSource" alt="Project 2" />
         <div class="carousel-caption d-none d-md-block">
           <h5>Project Two</h5>
           <p>Track your ninja's fitness!</p>
         </div>
       </div>
       <div class="carousel-item" >
-        <img class="d-block w-100" src="../assets/preview-hierarchy-example.png" alt="Hierarchy Example" />
+        <img class="d-block w-100" :src="HierarchyExampleSource" alt="Hierarchy Example" />
         <div class="carousel-caption d-none d-md-block">
           <h5>Project Three</h5>
           <p>See d3 hierarchy in action!</p>
         </div>
       </div>
       <div class="carousel-item" >
-        <img class="d-block w-100" src="../assets/preview-project-three.png" alt="Project 3"/>
+        <img class="d-block w-100" :src="ProjectThreeSource" alt="Project 3"/>
         <div class="carousel-caption d-none d-md-block">
           <h5>Project Three</h5>
           <p>Manage the ninja team!</p>
