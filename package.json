@@ -17,7 +17,6 @@
   "dependencies": {
     "babel-plugin-inline-dotenv": "^1.6.0",
     "bootstrap": "^4.6.1",
-    "core-js": "^3.21.0",
     "d3": "^5.11.0",
     "d3-svg-legend": "^2.25.6",
     "d3-tip": "^0.9.1",
@@ -39,6 +38,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^27.5.1",
+    "core-js": "^3.27.1",
     "cypress": "^9.4.1",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^9.8.0",
