@@ -29,8 +29,8 @@
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/eslint-parser": "^7.19.1",
-    "@size-limit/file": "^5.0.5",
-    "@size-limit/webpack": "^5.0.5",
+    "@size-limit/file": "~6.0.4",
+    "@size-limit/webpack": "~6.0.4",
     "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-eslint": "^5.0.8",
     "@vue/cli-plugin-unit-jest": "^5.0.8",
@@ -44,7 +44,7 @@
     "eslint": "~8.31",
     "eslint-plugin-vue": "^9.8.0",
     "looks-same": "^7.3.0",
-    "size-limit": "^5.0.5",
+    "size-limit": "~6.0.4",
     "vue-template-compiler": "^2.7.14"
   },
   "engines": {
