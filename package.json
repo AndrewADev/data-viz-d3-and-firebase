@@ -51,7 +51,7 @@
     "vue-template-compiler": "^2.7.14"
   },
   "engines": {
-    "node": ">= 16",
-    "npm": ">= 8.19"
+    "node": ">= 18",
+    "npm": ">= 9"
   }
 }
