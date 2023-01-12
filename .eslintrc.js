@@ -21,7 +21,7 @@ module.exports = {
     'eol-last': warnOnlyInDev()
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: '@babel/eslint-parser'
   },
   overrides: [
     {
