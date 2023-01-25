@@ -41,7 +41,7 @@
     "@vue/vue2-jest": "^27.0.0",
     "babel-jest": "^27.5.1",
     "core-js": "^3.27.1",
-    "cypress": "^9.4.1",
+    "cypress": "^12.4.0",
     "eslint": "~8.31",
     "eslint-plugin-vue": "^9.8.0",
     "looks-same": "^7.3.0",
