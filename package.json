@@ -30,6 +30,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/eslint-parser": "^7.19.1",
+    "@rushstack/eslint-patch": "^1.2.0",
     "@size-limit/file": "~8.2.4",
     "@size-limit/webpack": "~8.2.4",
     "@vue/cli-plugin-babel": "^5.0.8",
