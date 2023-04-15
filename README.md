@@ -19,13 +19,13 @@ And a blank configuration file will be created for you. **You will still need to
 Otherwise, you can do this yourself by simply copying the below snippet into a file called `.env.local` and filling in with the values from the firebase console: Settings > Project Settings:
 
 ```
-VUE_APP_FIREBASE_API_KEY='YOUR_VAL_HERE'
-VUE_APP_FIREBASE_AUTH_DOMAIN='YOUR_VAL_HERE'
-VUE_APP_FIREBASE_DB_URL='YOUR_VAL_HERE'
-VUE_APP_FIREBASE_PROJ_ID='YOUR_VAL_HERE'
-VUE_APP_FIREBASE_STORAGE_BUCKET='YOUR_VAL_HERE'
-VUE_APP_FIREBASE_MESSAGE_SENDER_ID='YOUR_VAL_HERE'
-VUE_APP_FIREBASE_MESSAGE_APP_ID='YOUR_VAL_HERE'
+VITE_FIREBASE_API_KEY='YOUR_VAL_HERE'
+VITE_FIREBASE_AUTH_DOMAIN='YOUR_VAL_HERE'
+VITE_FIREBASE_DB_URL='YOUR_VAL_HERE'
+VITE_FIREBASE_PROJ_ID='YOUR_VAL_HERE'
+VITE_FIREBASE_STORAGE_BUCKET='YOUR_VAL_HERE'
+VITE_FIREBASE_MESSAGE_SENDER_ID='YOUR_VAL_HERE'
+VITE_FIREBASE_MESSAGE_APP_ID='YOUR_VAL_HERE'
 ```
 
 This file is automatically setup to be ignored by version control, and should allow you to store the necessary credentials only on the machine running the app, without accidentally publishing them by committing them.

@@ -3,7 +3,7 @@ import { getFirestore, connectFirestoreEmulator, initializeFirestore } from 'fir
 export const configureDatabase = (app) => {
   let db
 
-  if (process.env.VUE_APP_FIREBASE_BACKEND === 'emulator') {
+  if (import.meta.env.VITE_FIREBASE_BACKEND === 'emulator') {
     // eslint-disable-next-line no-console
     console.info('Connecting to Firebase emulator...')
 
