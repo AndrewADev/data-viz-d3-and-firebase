@@ -5,7 +5,7 @@ import { router } from '@/router'
 import Router from 'vue-router'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap'
-import 'jquery/src/jquery.js'
+import 'jquery'
 import { configureDatabase } from './firestore'
 
 Vue.config.productionTip = false
