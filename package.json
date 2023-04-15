@@ -44,7 +44,6 @@
     "eslint-plugin-vue": "^9.10.0",
     "looks-same": "^7.3.0",
     "sass": "^1.62.0",
-    "sass-loader": "^13.2.2",
     "size-limit": "~8.2.4",
     "vue-template-compiler": "^2.7.14"
   },
