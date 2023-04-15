@@ -33,6 +33,7 @@
     "@rushstack/eslint-patch": "^1.2.0",
     "@size-limit/file": "~8.2.4",
     "@size-limit/webpack": "~8.2.4",
+    "@vitejs/plugin-vue2": "^2.2.0",
     "@vue/cli-plugin-unit-jest": "^5.0.8",
     "@vue/eslint-config-standard": "^8.0.1",
     "@vue/test-utils": "1.3.5",
@@ -45,6 +46,7 @@
     "looks-same": "^7.3.0",
     "sass": "^1.62.0",
     "size-limit": "~8.2.4",
+    "vite": "^4.2.1",
     "vue-template-compiler": "^2.7.14"
   },
   "engines": {
