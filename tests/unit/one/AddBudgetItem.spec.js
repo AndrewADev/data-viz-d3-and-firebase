@@ -1,5 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils'
-import AddBudgetItem from '../../../src/components/one/AddBudgetItem'
+import AddBudgetItem from '@/components/one/AddBudgetItem.vue'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 const localVue = createLocalVue()
 
