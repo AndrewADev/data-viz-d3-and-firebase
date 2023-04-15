@@ -15,7 +15,6 @@
     "utils:gen-preview": "npx cypress run --config-file cypress.doc.json --spec 'cypress/documentation/documentation.spec.js' && node ./ci/export-documentation.js"
   },
   "dependencies": {
-    "babel-plugin-inline-dotenv": "^1.6.0",
     "bootstrap": "^4.6.1",
     "d3": "^5.11.0",
     "d3-svg-legend": "^2.25.6",
@@ -28,8 +27,6 @@
     "vue-router": "^3.6.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.12",
-    "@babel/eslint-parser": "^7.19.1",
     "@rushstack/eslint-patch": "^1.2.0",
     "@size-limit/file": "~8.2.4",
     "@size-limit/webpack": "~8.2.4",
@@ -38,8 +35,6 @@
     "@vue/eslint-config-standard": "^8.0.1",
     "@vue/test-utils": "1.3.5",
     "@vue/vue2-jest": "^27.0.0",
-    "babel-jest": "^27.5.1",
-    "core-js": "^3.27.1",
     "cypress": "^9.4.1",
     "eslint": "~8.31",
     "eslint-plugin-vue": "^9.10.0",
