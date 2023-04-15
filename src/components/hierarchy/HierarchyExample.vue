@@ -18,7 +18,7 @@
 
 <script>
 
-import CirclePackChart from './CirclePackChart'
+import CirclePackChart from './CirclePackChart.vue'
 
 export default {
   name: 'HierarchyExample',
