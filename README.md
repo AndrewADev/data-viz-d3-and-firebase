@@ -40,10 +40,10 @@ npm install
 
 Then to run:
 
-_Compiles and hot-reloads for development_
+_Compile with hot-reload for development_
 
 ```
-npm run serve
+npm run dev
 ```
 
 _Compiles and minifies for production_
@@ -87,7 +87,7 @@ Due to internal issues in the firebase emulator, the export currently only works
 Finally, to have the application connect to the emulated instance of firebase you can start it with:
 
 ```
-npm run serve:e2e
+npm run dev:e2e
 ```
 
 This makes use of [Vue CLI's modes](https://cli.vuejs.org/guide/mode-and-env.html) and environment variables to [wire up the emulator instead](./src/firestore/index.js#14).
