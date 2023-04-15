@@ -61,7 +61,7 @@ npm run lint
 _Run the unit tests_
 
 ```
-npm run test:unit
+npm run test
 ```
 
 ## End-to-end (e2e) tests

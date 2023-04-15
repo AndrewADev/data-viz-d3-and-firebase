@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "test:unit": "vue-cli-service test:unit",
+    "test": "vitest watch",
+    "test:no-watch": "vitest run",
     "lint": "eslint ./src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "lint:ci": "eslint ./src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --no-fix --ignore-path .gitignore",
     "dev:e2e": "vite --mode e2e",
     "setup": "./setup/project_setup.sh",
     "size": "npm run build && size-limit",
-    "test:unit:ci": "npm run test:unit -- --ci --coverage",
+    "test:coverage": "vitest run --coverage",
     "utils:gen-preview": "npx cypress run --config-file cypress.doc.json --spec 'cypress/documentation/documentation.spec.js' && node ./ci/export-documentation.js"
   },
   "dependencies": {
