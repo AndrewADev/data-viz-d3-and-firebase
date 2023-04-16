@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import AddBudgetItem from './AddBudgetItem'
-import DonutChart from './DonutChart'
+import AddBudgetItem from './AddBudgetItem.vue'
+import DonutChart from './DonutChart.vue'
 import { collection, addDoc } from 'firebase/firestore'
 
 export default {

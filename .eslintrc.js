@@ -4,7 +4,8 @@ const warnOnlyInDev = () => isProd ? 'error' : 'warn'
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
+    es2022: true
   },
   extends: [
     'plugin:vue/essential',
@@ -19,9 +20,6 @@ module.exports = {
     'no-trailing-spaces': warnOnlyInDev(),
     'comma-dangle': warnOnlyInDev(),
     'eol-last': warnOnlyInDev()
-  },
-  parserOptions: {
-    parser: '@babel/eslint-parser'
   },
   overrides: [
     {

@@ -1,10 +1,10 @@
 import HomeView from '@/views/HomeView.vue'
 
 // Projects
-import ProjectOne from '@/components/one/ProjectOne'
-import ProjectTwo from '@/components/two/ProjectTwo'
-import HierarchyExample from '@/components/hierarchy/HierarchyExample'
-import ProjectThree from '@/components/three/ProjectThree'
+import ProjectOne from '@/components/one/ProjectOne.vue'
+import ProjectTwo from '@/components/two/ProjectTwo.vue'
+import HierarchyExample from '@/components/hierarchy/HierarchyExample.vue'
+import ProjectThree from '@/components/three/ProjectThree.vue'
 
 export const home = {
   path: '/',

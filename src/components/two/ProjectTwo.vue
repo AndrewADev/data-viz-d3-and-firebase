@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import LineChart from './LineChart'
+import LineChart from './LineChart.vue'
 import { collection, addDoc } from 'firebase/firestore'
 
 import { ACTIVITY } from './constants'

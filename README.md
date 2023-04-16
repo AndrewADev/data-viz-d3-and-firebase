@@ -19,13 +19,13 @@ And a blank configuration file will be created for you. **You will still need to
 Otherwise, you can do this yourself by simply copying the below snippet into a file called `.env.local` and filling in with the values from the firebase console: Settings > Project Settings:
 
 ```
-VUE_APP_FIREBASE_API_KEY='YOUR_VAL_HERE'
-VUE_APP_FIREBASE_AUTH_DOMAIN='YOUR_VAL_HERE'
-VUE_APP_FIREBASE_DB_URL='YOUR_VAL_HERE'
-VUE_APP_FIREBASE_PROJ_ID='YOUR_VAL_HERE'
-VUE_APP_FIREBASE_STORAGE_BUCKET='YOUR_VAL_HERE'
-VUE_APP_FIREBASE_MESSAGE_SENDER_ID='YOUR_VAL_HERE'
-VUE_APP_FIREBASE_MESSAGE_APP_ID='YOUR_VAL_HERE'
+VITE_FIREBASE_API_KEY='YOUR_VAL_HERE'
+VITE_FIREBASE_AUTH_DOMAIN='YOUR_VAL_HERE'
+VITE_FIREBASE_DB_URL='YOUR_VAL_HERE'
+VITE_FIREBASE_PROJ_ID='YOUR_VAL_HERE'
+VITE_FIREBASE_STORAGE_BUCKET='YOUR_VAL_HERE'
+VITE_FIREBASE_MESSAGE_SENDER_ID='YOUR_VAL_HERE'
+VITE_FIREBASE_MESSAGE_APP_ID='YOUR_VAL_HERE'
 ```
 
 This file is automatically setup to be ignored by version control, and should allow you to store the necessary credentials only on the machine running the app, without accidentally publishing them by committing them.
@@ -40,10 +40,10 @@ npm install
 
 Then to run:
 
-_Compiles and hot-reloads for development_
+_Compile with hot-reload for development_
 
 ```
-npm run serve
+npm run dev
 ```
 
 _Compiles and minifies for production_
@@ -61,7 +61,7 @@ npm run lint
 _Run the unit tests_
 
 ```
-npm run test:unit
+npm run test
 ```
 
 ## End-to-end (e2e) tests
@@ -87,7 +87,7 @@ Due to internal issues in the firebase emulator, the export currently only works
 Finally, to have the application connect to the emulated instance of firebase you can start it with:
 
 ```
-npm run serve:e2e
+npm run dev:e2e
 ```
 
 This makes use of [Vue CLI's modes](https://cli.vuejs.org/guide/mode-and-env.html) and environment variables to [wire up the emulator instead](./src/firestore/index.js#14).

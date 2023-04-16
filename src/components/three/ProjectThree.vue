@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import AddEmployeeModal from './AddEmployeeModal'
-import OrganizationDiagram from './OrganizationDiagram'
+import AddEmployeeModal from './AddEmployeeModal.vue'
+import OrganizationDiagram from './OrganizationDiagram.vue'
 import { collection, addDoc } from 'firebase/firestore'
 
 export default {

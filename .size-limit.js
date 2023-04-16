@@ -2,28 +2,23 @@
 module.exports = [
   {
     name: 'App JS',
-    path: 'dist/**/app.*.js',
-    limit: '13kB'
+    path: 'dist/**/index-*.js',
+    // After switching to Vite (uses ESBuild as bundler), some dependencies
+    // are also counted here, even with separate regex/chunk, which
+    // renders a limit for the actual app file size virtually useless.
+    // The app chunk itself is actually well within this range (ca. 9.3 kB
+    // gzipped per Vite output) at the time of migration.
+    // limit: '13kB'
+    limit: '230kB'
   },
   {
-    name: 'App CSS',
-    path: 'dist/**/app.*.css',
-    limit: '1.1kB',
-    // prevent injection of style-loader runtime, see last part of:
-    // https://github.com/ai/size-limit#config
-    webpack: false
-  },
-  {
-    name: 'Vendor CSS',
-    path: 'dist/**/*-vendors.*.css',
-    limit: '43kB',
-    // prevent injection of style-loader runtime, see last part of:
-    // https://github.com/ai/size-limit#config
-    webpack: false
+    name: 'All CSS',
+    path: 'dist/**/index-*.css',
+    limit: '27kB',
   },
   {
     name: 'Vendor JS',
-    path: 'dist/**/*-vendors.*.js',
-    limit: '362kB'
+    path: 'dist/**/vendor-*.js',
+    limit: '250kB'
   }
 ]

@@ -5,19 +5,19 @@ import { router } from '@/router'
 import Router from 'vue-router'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap'
-import 'jquery/src/jquery.js'
+import 'jquery'
 import { configureDatabase } from './firestore'
 
 Vue.config.productionTip = false
 
 const dbConfig = {
-  apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
-  authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.VUE_APP_FIREBASE_DB_URL,
-  projectId: process.env.VUE_APP_FIREBASE_PROJ_ID,
-  storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGE_SENDER_ID,
-  appId: process.env.VUE_APP_FIREBASE_MESSAGE_APP_ID
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DB_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJ_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGE_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_MESSAGE_APP_ID
 }
 
 const firebaseApp = initializeApp(dbConfig)

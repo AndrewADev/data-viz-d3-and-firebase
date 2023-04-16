@@ -15,9 +15,7 @@ import { computed } from 'vue'
 import { ProjectCarousel } from '@/components'
 import { projects } from '@/config'
 
-// This must be "partially static" (can't extract to a separate variable), or it won't work.
-// See: https://forum.vuejs.org/t/vue-cli-3-project-dynamic-src-in-image-path-not-working/55375/4
-const getAsset = (asset) => require(`../assets/${asset}`)
+const getAsset = (asset) => new URL(`../assets/${asset}`, import.meta.url).href
 
 const carouselProjects = computed(() => {
   return projects.map(p => {

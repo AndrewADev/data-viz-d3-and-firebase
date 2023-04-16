@@ -1,5 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils'
-import AddEmployeeModal from '@/components/three/AddEmployeeModal'
+import AddEmployeeModal from '@/components/three/AddEmployeeModal.vue'
+import { describe, expect, it } from 'vitest'
 
 const localVue = createLocalVue()
 
