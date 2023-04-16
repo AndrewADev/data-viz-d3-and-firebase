@@ -38,3 +38,6 @@ cypress/videos
 # NOTE: May need to undo these at some point, if using like-named fixtures
 cypress/fixtures/profile.json
 cypress/fixtures/users.json
+
+# Size-limit output
+esbuild-why*.html
