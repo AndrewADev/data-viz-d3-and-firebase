@@ -1,5 +1,7 @@
 import { getFirestore, connectFirestoreEmulator, initializeFirestore } from 'firebase/firestore'
 
+
+
 export const configureDatabase = (app) => {
   let db
 
@@ -12,7 +14,7 @@ export const configureDatabase = (app) => {
     // Documentation on setting available here:
     //   https://firebase.google.com/docs/reference/js/firebase.firestore.Settings#optional-experimentalautodetectlongpolling
     db = initializeFirestore(app, { experimentalAutoDetectLongPolling: true })
-    connectFirestoreEmulator(db, 'localhost', 8050)
+    connectFirestoreEmulator(db, '127.0.0.1', 8050)
   } else {
     db = getFirestore(app)
   }
