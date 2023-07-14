@@ -43,7 +43,7 @@
     "looks-same": "^7.3.0",
     "sass": "^1.62.1",
     "size-limit": "~8.2.4",
-    "vite": "^4.3.8",
+    "vite": "^4.4.4",
     "vitest": "^0.31.1"
   },
   "engines": {
