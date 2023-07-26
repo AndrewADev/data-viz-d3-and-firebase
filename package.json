@@ -16,7 +16,7 @@
     "utils:gen-preview": "npx cypress run --config-file cypress.doc.json --spec 'cypress/documentation/documentation.spec.js' && node ./ci/export-documentation.js"
   },
   "dependencies": {
-    "bootstrap": "^4.6.1",
+    "bootstrap": "^5.3.1",
     "d3": "^5.11.0",
     "d3-svg-legend": "^2.25.6",
     "d3-tip": "^0.9.1",
