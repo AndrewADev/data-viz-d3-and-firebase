@@ -16,26 +16,9 @@
   </div>
 </template>
 
-<script>
-
+<script setup>
 import CirclePackChart from './CirclePackChart.vue'
 
-export default {
-  name: 'HierarchyExample',
-  components: { CirclePackChart },
-  data () {
-    return {
-      error: ''
-    }
-  },
-
-  computed: {
-  },
-
-  methods: {
-  }
-
-}
 </script>
 
 <style lang="scss" scoped>
