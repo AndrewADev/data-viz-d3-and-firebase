@@ -1,8 +1,7 @@
-import Vue from 'vue'
+import Vue, { createApp } from 'vue'
 import { initializeApp } from 'firebase/app'
 import App from './App.vue'
 import { router } from '@/router'
-import Router from 'vue-router'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap'
 import 'jquery'
@@ -23,9 +22,7 @@ const dbConfig = {
 const firebaseApp = initializeApp(dbConfig)
 
 Vue.prototype.$firestore = configureDatabase(firebaseApp)
-Vue.use(Router)
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app')
+const app = createApp(App)
+app.use(router)
+app.mount('#app')

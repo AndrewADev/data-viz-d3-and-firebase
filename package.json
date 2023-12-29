@@ -16,6 +16,7 @@
     "utils:gen-preview": "npx cypress run --config-file cypress.doc.json --spec 'cypress/documentation/documentation.spec.js' && node ./ci/export-documentation.js"
   },
   "dependencies": {
+    "@vue/compat": "^3.4.0",
     "bootstrap": "^4.6.1",
     "d3": "^5.11.0",
     "d3-svg-legend": "^2.25.6",
@@ -24,8 +25,7 @@
     "jquery": "^3.7.0",
     "popper.js": "^1.16.1",
     "vue": "^3.4.0",
-    "@vue/compat": "^3.4.0",
-    "vue-router": "^3.6.5"
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.6.1",
