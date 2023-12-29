@@ -1,7 +1,5 @@
 import { getFirestore, connectFirestoreEmulator, initializeFirestore } from 'firebase/firestore'
 
-
-
 export const configureDatabase = (app) => {
   let db
 
