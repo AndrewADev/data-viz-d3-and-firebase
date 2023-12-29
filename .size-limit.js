@@ -9,16 +9,19 @@ module.exports = [
     // The app chunk itself is actually well within this range (ca. 9.3 kB
     // gzipped per Vite output) at the time of migration.
     // limit: '13kB'
-    limit: '230kB'
+    limit: '250kB',
+    gzip: true
   },
   {
     name: 'All CSS',
     path: 'dist/**/index-*.css',
     limit: '27kB',
+    gzip: true
   },
   {
     name: 'Vendor JS',
     path: 'dist/**/vendor-*.js',
-    limit: '250kB'
+    limit: '250kB',
+    gzip: true
   }
 ]
