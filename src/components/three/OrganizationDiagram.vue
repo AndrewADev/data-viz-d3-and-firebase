@@ -19,6 +19,13 @@ import { collection, onSnapshot } from 'firebase/firestore'
 
 export default {
   name: 'OrganizationDiagram',
+
+  inject: {
+    firestore: {
+      default: () => ({})
+    }
+  },
+
   data () {
     return {
       marginTop: 50,
@@ -144,7 +151,7 @@ export default {
   },
 
   mounted () {
-    this.db = this.$firestore
+    this.db = this.firestore
     this.subscribeToFirebaseUpdates()
   }
 }

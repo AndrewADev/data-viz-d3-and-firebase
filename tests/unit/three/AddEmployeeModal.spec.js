@@ -6,10 +6,7 @@ describe('AddEmployeeModal', () => {
   // i.e. does validation instead of disappearing
   it('does not disappear on button click', () => {
     const wrapper = mount(AddEmployeeModal, {
-      attachTo: document.body,
-      props: {
-        static: true
-      }
+      attachTo: document.body
     })
 
     const button = wrapper.find('button')

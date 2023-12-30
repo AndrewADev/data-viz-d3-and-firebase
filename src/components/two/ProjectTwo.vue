@@ -52,6 +52,13 @@ import { ACTIVITY } from './constants'
 export default {
   name: 'ProjectTwo',
   components: { LineChart },
+
+  inject: {
+    firestore: {
+      default: () => ({})
+    }
+  },
+
   data () {
     return {
       db: {},
@@ -107,7 +114,7 @@ export default {
   },
 
   mounted () {
-    this.db = this.$firestore
+    this.db = this.firestore
 
     this.drawGraph()
   }

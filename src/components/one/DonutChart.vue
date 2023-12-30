@@ -18,6 +18,12 @@ import { collection, doc, deleteDoc, onSnapshot } from 'firebase/firestore'
 export default {
   name: 'DonutChart',
 
+  inject: {
+    firestore: {
+      default: () => ({})
+    }
+  },
+
   props: {
     height: {
       type: Number,
@@ -214,7 +220,7 @@ export default {
   },
 
   mounted () {
-    this.db = this.$firestore
+    this.db = this.firestore
     this.initializeChart()
     this.subscribeFirebaseUpdates()
   }
