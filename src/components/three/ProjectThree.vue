@@ -35,6 +35,13 @@ import { collection, addDoc } from 'firebase/firestore'
 export default {
   name: 'ProjectThree',
   components: { AddEmployeeModal, OrganizationDiagram },
+
+  inject: {
+    firestore: {
+      default: () => ({})
+    }
+  },
+
   data () {
     return {
       db: {},
@@ -59,7 +66,7 @@ export default {
   },
 
   mounted () {
-    this.db = this.$firestore
+    this.db = this.firestore
   }
 
 }

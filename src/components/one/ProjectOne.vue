@@ -23,6 +23,13 @@ import { collection, addDoc } from 'firebase/firestore'
 export default {
   name: 'ProjectOne',
   components: { AddBudgetItem, DonutChart },
+
+  inject: {
+    firestore: {
+      default: () => ({})
+    }
+  },
+
   data () {
     return {
       db: {},
@@ -49,7 +56,7 @@ export default {
   },
 
   mounted () {
-    this.db = this.$firestore
+    this.db = this.firestore
 
     this.drawGraph()
   }

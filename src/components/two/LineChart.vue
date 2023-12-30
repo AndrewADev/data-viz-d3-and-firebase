@@ -28,6 +28,13 @@ import { ACTIVITY } from './constants'
 
 export default {
   name: 'LineChart',
+
+  inject: {
+    firestore: {
+      default: () => ({})
+    }
+  },
+
   data () {
     return {
       marginTop: 40,
@@ -212,7 +219,7 @@ export default {
   },
 
   mounted () {
-    this.db = this.$firestore
+    this.db = this.firestore
     this.subscribeToFirebaseUpdates()
     this.drawGraph()
   }

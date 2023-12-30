@@ -21,8 +21,9 @@ const dbConfig = {
 
 const firebaseApp = initializeApp(dbConfig)
 
-Vue.prototype.$firestore = configureDatabase(firebaseApp)
+const db = configureDatabase(firebaseApp)
 
 const app = createApp(App)
 app.use(router)
+app.provide('firestore', db)
 app.mount('#app')
