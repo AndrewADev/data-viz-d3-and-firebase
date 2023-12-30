@@ -1,7 +1,6 @@
 <template>
   <div
     :id="modalId"
-    :static="this.static"
     class="modal"
     ref="main-modal"
     aria-labelledby="add-new-employee-header"
@@ -97,11 +96,6 @@ export default {
     modalId: {
       type: String,
       default: 'add-employee-modal'
-    },
-    // Needed for testing, see: https://stackoverflow.com/a/58539818
-    static: {
-      type: Boolean,
-      default: false
     },
     availableManagers: {
       type: Array,
