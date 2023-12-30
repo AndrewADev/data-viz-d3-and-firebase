@@ -1,16 +1,12 @@
-import { createLocalVue, mount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import AddBudgetItem from '@/components/one/AddBudgetItem.vue'
 import { beforeEach, describe, expect, it } from 'vitest'
-
-const localVue = createLocalVue()
 
 describe('AddBudgetItem', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = mount(AddBudgetItem, {
-      localVue
-    })
+    wrapper = mount(AddBudgetItem, {})
   })
 
   it('rejects invalid args', () => {
