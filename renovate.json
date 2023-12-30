@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":automergeLinters",
+    ":automergeTesters",
+    ":automergeTypes",
+    ":automergeRequireAllStatusChecks"
+  ],
+  "packageRules": [
+    {
+      "groupName": "Test packages (non-preset)",
+      "matchPackageNames": ["jsdom"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
+  ],
+  "js": {
+    "rangeStrategy": "bump"
+  }
+}
