@@ -39,7 +39,7 @@
     "cypress": "^9.4.1",
     "eslint": "^8.56.0",
     "eslint-plugin-vue": "^9.20.0",
-    "jsdom": "^23.0.1",
+    "jsdom": "^23.2.0",
     "looks-same": "^7.3.0",
     "sass": "^1.62.1",
     "size-limit": "^11.0.1",
