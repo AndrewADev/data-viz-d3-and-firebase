@@ -41,7 +41,7 @@
     "eslint-plugin-vue": "^9.20.0",
     "jsdom": "^23.2.0",
     "looks-same": "^7.3.0",
-    "sass": "^1.62.1",
+    "sass": "^1.79.4",
     "size-limit": "^11.0.1",
     "vite": "^5.0.11",
     "vitest": "^1.1.3"
