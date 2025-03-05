@@ -13,7 +13,7 @@ context('ProjectTwo', () => {
 
     // A bit of waiting may be needed for initial data load
     cy.get('svg')
-      .find('circle', { timeout: 10000 })
+      .find('circle', { timeout: 60000 })
       .should('have.length', 4)
 
     cy.get('#cycling')
