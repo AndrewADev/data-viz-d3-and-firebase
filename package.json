@@ -28,7 +28,7 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.6.1",
+    "@rushstack/eslint-patch": "^1.16.1",
     "@size-limit/esbuild": "^11.0.1",
     "@size-limit/esbuild-why": "^11.0.1",
     "@size-limit/file": "^11.0.1",
