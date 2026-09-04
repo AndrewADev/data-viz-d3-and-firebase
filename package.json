@@ -25,7 +25,7 @@
     "jquery": "^3.7.0",
     "popper.js": "^1.16.1",
     "vue": "^3.4.0",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.6.1",
